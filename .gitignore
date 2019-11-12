@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# ignora settings do projeto pq contem string connection
+.Sispar.Api/appsettings.Development.json
+.Sispar.Api/appsettings.json
+
