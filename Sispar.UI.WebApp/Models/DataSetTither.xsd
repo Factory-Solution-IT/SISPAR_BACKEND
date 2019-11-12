@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetTither" targetNamespace="http://tempuri.org/DataSetTither.xsd" xmlns:mstns="http://tempuri.org/DataSetTither.xsd" xmlns="http://tempuri.org/DataSetTither.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetTither" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetTither" msprop:Generator_UserDSName="DataSetTither">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TITHER" msprop:Generator_TableClassName="TITHERDataTable" msprop:Generator_TableVarName="tableTITHER" msprop:Generator_TablePropName="TITHER" msprop:Generator_RowDeletingName="TITHERRowDeleting" msprop:Generator_RowChangingName="TITHERRowChanging" msprop:Generator_RowEvHandlerName="TITHERRowChangeEventHandler" msprop:Generator_RowDeletedName="TITHERRowDeleted" msprop:Generator_UserTableName="TITHER" msprop:Generator_RowChangedName="TITHERRowChanged" msprop:Generator_RowEvArgName="TITHERRowChangeEvent" msprop:Generator_RowClassName="TITHERRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_TITHER" msprop:Generator_ColumnVarNameInTable="columnID_TITHER" msprop:Generator_ColumnPropNameInRow="ID_TITHER" msprop:Generator_ColumnPropNameInTable="ID_TITHERColumn" msprop:Generator_UserColumnName="ID_TITHER" type="xs:string" minOccurs="0" />
+              <xs:element name="NAME_TITHER" msprop:Generator_ColumnVarNameInTable="columnNAME_TITHER" msprop:Generator_ColumnPropNameInRow="NAME_TITHER" msprop:Generator_ColumnPropNameInTable="NAME_TITHERColumn" msprop:Generator_UserColumnName="NAME_TITHER" type="xs:string" minOccurs="0" />
+              <xs:element name="ADDRESS_TITHER" msprop:Generator_ColumnVarNameInTable="columnADDRESS_TITHER" msprop:Generator_ColumnPropNameInRow="ADDRESS_TITHER" msprop:Generator_ColumnPropNameInTable="ADDRESS_TITHERColumn" msprop:Generator_UserColumnName="ADDRESS_TITHER" type="xs:string" minOccurs="0" />
+              <xs:element name="MATIRAL_STATUS" msprop:Generator_ColumnVarNameInTable="columnMATIRAL_STATUS" msprop:Generator_ColumnPropNameInRow="MATIRAL_STATUS" msprop:Generator_ColumnPropNameInTable="MATIRAL_STATUSColumn" msprop:Generator_UserColumnName="MATIRAL_STATUS" type="xs:int" minOccurs="0" />
+              <xs:element name="BIRTH_DATE" msprop:Generator_ColumnVarNameInTable="columnBIRTH_DATE" msprop:Generator_ColumnPropNameInRow="BIRTH_DATE" msprop:Generator_ColumnPropNameInTable="BIRTH_DATEColumn" msprop:Generator_UserColumnName="BIRTH_DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="REGISTER_DATE" msprop:Generator_ColumnVarNameInTable="columnREGISTER_DATE" msprop:Generator_ColumnPropNameInRow="REGISTER_DATE" msprop:Generator_ColumnPropNameInTable="REGISTER_DATEColumn" msprop:Generator_UserColumnName="REGISTER_DATE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="TITHERKey1">
+      <xs:selector xpath=".//mstns:TITHER" />
+      <xs:field xpath="mstns:ID_TITHER" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

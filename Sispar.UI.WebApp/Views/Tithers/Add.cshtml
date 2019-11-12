@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Novo Dizimista</h2>
+
+<hr />
+
+<form  method="post">
+    <div class="form-group">
+        <label>Nome</label>
+        <input class="form-control" type="text" name="name" autofocus  />
+    </div>
+    <div class="form-group">
+        <label>Endereço</label>
+        <input class="form-control" type="text" name="address" />
+    </div>
+
+    <div class="form-group">
+        <label>Data de Nascimento</label>
+        <input class="form-control" type="date" name="birthDate" />
+    </div>
+
+    <div class="form-group">
+        <label>CPF</label>
+        <input class="form-control" type="text" name="cpf" />
+    </div>
+
+    <div class="form-group">
+        <label>Telefone</label>
+        <input class="form-control" type="text" name="telePhone" />
+    </div>
+
+    <div class="form-group">
+        <label>Celular</label>
+        <input class="form-control" type="text" name="cellPhone" />
+    </div>
+
+    <div class="form-group">
+        <label>Tipo</label>
+
+        @Html.DropDownList("MatiralStatus",
+            EnumHelper.GetSelectList(typeof(Sispar.Core.Entities.MatiralStatus)),
+            "Selecione.....",
+            new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Data de Casamento</label>
+        <input class="form-control" type="date" name="marriegeDate" id="marriegeDate"   />
+    </div>
+
+    <div class="form-group">
+        <label>Nome da(o) Esposa(o)</label>
+        <input class="form-control" type="text" name="nameSpouse" id="nameSpouse" />
+    </div>
+
+    <div class="form-group">
+        <label>Dt. de Nascimento da(o) Esposa(o)</label>
+        <input class="form-control" type="date" name="dateBirthSpouse" id="dateBirthSpouse"  />
+    </div>
+
+
+    <div>
+        <button class="btn btn-primary">Salvar</button>
+        <a class="btn btn-primary">Gerar Relatório</a>
+        <a class="btn btn-default" href="/Tithers">Cancelar</a>
+    </div>
+</form>
+
+
+@section Scripts
+{
+<script>
+
+    $(document).ready(function () {
+
+        ativarCampos();
+
+    });
+
+    $('select').on('change', function () {
+
+        ativarCampos();
+
+    });
+
+    function ativarCampos() {
+
+        if ($('select').val() != 2) {
+
+            $("#marriegeDate").prop('disabled', true);
+            $("#nameSpouse").prop('disabled', true);
+            $("#dateBirthSpouse").prop('disabled', true);
+
+        } else {
+
+            $("#marriegeDate").prop('disabled', false);
+            $("#nameSpouse").prop('disabled', false);
+            $("#dateBirthSpouse").prop('disabled', false);
+        }
+    };
+
+</script>
+}
