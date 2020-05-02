@@ -23,6 +23,10 @@ namespace Sispar.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var tithers = await _titherService.GetAllAsync();
+
+            if (tithers == null || tithers.Count() == 0)
+                return NotFound();
+                
             return Ok(tithers);
         }
 
