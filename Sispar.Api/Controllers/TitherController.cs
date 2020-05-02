@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     public class TitherController : Controller
     {
@@ -28,7 +27,7 @@ namespace Sispar.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetById")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var tither = await _titherService.GetByIdAsync(id);
 

@@ -23,7 +23,7 @@ namespace Sispar.Business.Services
             return _ctx.GetAll();
         }
 
-        public Tither GetById(int id)
+        public Tither GetById(Guid id)
         {
             return _ctx.GetById(id);
         }
@@ -51,9 +51,15 @@ namespace Sispar.Business.Services
             return await _ctx.GetAllAsync();
         }
 
-        public async Task<Tither> GetByIdAsync(int id)
+        public async Task<Tither> GetByIdAsync(Guid id)
         {
             return await _ctx.GetByIdAsync(id);
         }
+
+        public Tither GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

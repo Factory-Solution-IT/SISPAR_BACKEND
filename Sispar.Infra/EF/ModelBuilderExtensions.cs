@@ -15,12 +15,12 @@ namespace Sispar.Infra.EF
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new User() { Id = 1, Username = "milton", Password = "123456".Encrypt() },
-                new User() { Id = 2, Username = "felipe", Password = "123456".Encrypt() }
+                new User() { Id = Guid.NewGuid(), Username = "milton", Password = "123456".Encrypt() },
+                new User() { Id = Guid.NewGuid(), Username = "felipe", Password = "123456".Encrypt() }
                 );
 
             modelBuilder.Entity<Tither>().HasData(
-                new Tither() { Id = 1, Name = "Jose", Address = "rua sem saida", BirthDate = DateTime.UtcNow, CPF = "999.999.999-99",
+                new Tither() { Id = Guid.NewGuid(), Name = "Jose", Address = "rua sem saida", BirthDate = DateTime.UtcNow, CPF = "999.999.999-99",
                     Telephone = "11 9.9999-9999", Cellphone = "11 9.9999-9999", MarriegeDate = DateTime.UtcNow, NameSpouse = "Maria",
                     DateBirthSpouse = DateTime.UtcNow, Active = true }
                 );

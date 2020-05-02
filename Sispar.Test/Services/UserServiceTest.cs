@@ -241,8 +241,8 @@ namespace Sispar.Test
         public UserRepoFake()
         {
             _repo = new List<User>() {
-                    new User(){ Id = 1, Username = "felipe", Password = "123456".Encrypt() , Active = true},
-                    new User(){ Id = 2, Username = "milton", Password = "123456".Encrypt() , Active = false}
+                    new User(){ Id = Guid.NewGuid(), Username = "felipe", Password = "123456".Encrypt() , Active = true},
+                    new User(){ Id = Guid.NewGuid(), Username = "milton", Password = "123456".Encrypt() , Active = false}
                 };
         }
 
@@ -282,7 +282,7 @@ namespace Sispar.Test
             throw new NotImplementedException();
         }
 
-        public User GetById(int id)
+        public User GetById(Guid id)
         {
             return _repo.Where(x => x.Id == id).FirstOrDefault();
         }

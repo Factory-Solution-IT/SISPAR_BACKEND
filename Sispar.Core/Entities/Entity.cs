@@ -10,7 +10,7 @@ namespace Sispar.Core.Entities
     public class Entity
     {
         //Names Entities
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public DateTime RegisterDate { get; set; } = DateTime.UtcNow;
     }

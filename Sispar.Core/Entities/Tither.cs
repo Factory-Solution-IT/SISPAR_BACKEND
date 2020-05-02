@@ -14,6 +14,7 @@ namespace Sispar.Core.Entities
 
         public string Address { get; set; }
 
+        [NotMapped]
         public MatiralStatus MatiralStatus { get; set; }
 
         public DateTime BirthDate { get; set; }

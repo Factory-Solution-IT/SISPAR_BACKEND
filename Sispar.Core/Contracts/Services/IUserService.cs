@@ -15,7 +15,7 @@ namespace Sispar.Core.Contracts.Services
         User Register(string username, string password, string confirmPassword);
         IEnumerable<User> GetAll();
         Task<IEnumerable<User>> GetAllAsync();
-        User GetById(int id);
-        Task<User> GetByIdAsync(int id);
+        User GetById(Guid id);
+        Task<User> GetByIdAsync(Guid id);
     }
 }
