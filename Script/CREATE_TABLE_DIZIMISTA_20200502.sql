@@ -22,3 +22,10 @@ CREATE TABLE TITHER
       ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 
 );
+
+alter table tither add ACTIVE SMALLINT;
+alter table tither add CPF_TITHER VARCHAR(20);
+alter table tither add DATE_BIRTH_SPOUSE DATE;
+alter table tither add MATIRAL_STATUS SMALLINT;
+alter table tither alter column MATIRAL_STATUS SMALLINT;
+alter table tither add REGISTER_DATE DATETIME;

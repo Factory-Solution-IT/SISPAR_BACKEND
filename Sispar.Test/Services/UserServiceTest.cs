@@ -287,7 +287,7 @@ namespace Sispar.Test
             return _repo.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public Task<User> GetByIdAsync(int id)
+        public Task<User> GetByIdAsync(Guid id)
         {
             throw new NotImplementedException();
         }
