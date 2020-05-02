@@ -56,9 +56,9 @@ namespace Sispar.Infra.EF.Maps
             builder.Property(c => c.Active)
                 .HasColumnName("ACTIVE")
                 .HasColumnType("smallint");
-            // builder.Property(c => c.MatiralStatus)
-            //     .HasColumnName("MATIRAL_STATUS")
-            //     .HasColumnType("int");
+            builder.Property(c => c.MatiralStatus)
+                .HasColumnName("MATIRAL_STATUS")
+                .HasColumnType("smallint");
 
 
             //[Column("MATIRAL_STATUS")]
