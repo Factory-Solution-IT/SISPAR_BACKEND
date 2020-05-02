@@ -30,8 +30,8 @@ namespace Sispar.Api
 
 
             // services.AddDbContext<SisparDataContext>(options => {
-            //     options.UseSqlServer("Server=sql5059.site4now.net;Database=DB_A5E01E_sisparhomolog;User Id=DB_A5E01E_sisparhomolog_admin;Password=metal001;");
-            //     // options.UseSqlServer(_config.GetConnectionString("SisparDbConn"));
+            //     //options.UseSqlServer("Server=sql5059.site4now.net;Database=DB_A5E01E_sisparhomolog;User Id=DB_A5E01E_sisparhomolog_admin;Password=metal001;");
+            //     options.UseSqlServer(_config.GetConnectionString("SisparDbConn"));
             // });
             // Bearer ou Basic (Usuario|Senha) em Base64
             /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
