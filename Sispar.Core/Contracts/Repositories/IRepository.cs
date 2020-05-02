@@ -14,9 +14,9 @@ namespace Sispar.Core.Contracts
         void Delete(T obj);
 
         IEnumerable<T> GetAll();
-        T GetById(int id);
+        T GetById(Guid id);
 
         Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(Guid id);
     }
 }

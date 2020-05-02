@@ -28,7 +28,7 @@ namespace Sispar.Api.Controllers
         }
 
         [HttpGet("{id}", Name = "GetUserById")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var user = await _userService.GetByIdAsync(id);
 

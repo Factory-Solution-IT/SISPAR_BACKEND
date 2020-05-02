@@ -21,10 +21,11 @@ namespace Sispar.Infra.EF.Maps
 
             // columns
             builder.Property(c => c.Id)
-                .HasColumnName("ID_TITHER");
+                .HasColumnName("ID_TITHER")
+                .HasColumnType("vachar(36)");
             builder.Property(c => c.RegisterDate)
-               .HasColumnName("REGISTER_DATE")
-               .HasColumnType("datetime");
+                .HasColumnName("REGISTER_DATE")
+                .HasColumnType("datetime");
             builder.Property(c => c.Name)
                 .HasColumnName("NAME_TITHER")
                 .HasColumnType("varchar(100)");
@@ -55,6 +56,10 @@ namespace Sispar.Infra.EF.Maps
             builder.Property(c => c.Active)
                 .HasColumnName("ACTIVE")
                 .HasColumnType("smallint");
+            builder.Property(c => c.MatiralStatus)
+                .HasColumnName("MATIRAL_STATUS")
+                .HasColumnType("smallint");
+
 
             //[Column("MATIRAL_STATUS")]
             //public MatiralStatus MatiralStatus { get; set; }

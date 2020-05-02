@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using Sispar.Core.Contracts.Services;
 using Sispar.Core.Entities;
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -44,31 +42,30 @@ namespace Sispar.Api.Controllers
         {
             var claims = new[] {
 
-                new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.Username),
-//                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                // new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+                // new Claim(JwtRegisteredClaimNames.GivenName, user.Username),
                 new Claim(ClaimTypes.Role, "Admin"),
                 new Claim(ClaimTypes.Role, "TI"),
                 //new Claim("permissions","addUser")
             };
 
-            var key =
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecurityKey"]));
+            // var key =
+            //     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecurityKey"]));
 
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            // var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(
-                issuer: "sispar",
-                audience: "sispar/client",
-                claims: claims,
-                expires: DateTime.UtcNow.AddMonths(1),
-                notBefore: DateTime.UtcNow,
-                signingCredentials: credentials
-            );
+            // var token = new JwtSecurityToken(
+            //     issuer: "sispar",
+            //     audience: "sispar/client",
+            //     claims: claims,
+            //     expires: DateTime.UtcNow.AddMonths(1),
+            //     notBefore: DateTime.UtcNow,
+            //     signingCredentials: credentials
+            // );
 
-            return Ok(
-                new { token = new JwtSecurityTokenHandler().WriteToken(token) }
-               );
+            return Ok(new {  });
+//                new { token = new JwtSecurityTokenHandler().WriteToken(token) }
+//               );
         }
 
 

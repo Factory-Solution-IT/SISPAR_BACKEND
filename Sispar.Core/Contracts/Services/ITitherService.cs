@@ -13,9 +13,9 @@ namespace Sispar.Core.Contracts.Services
             DateTime marriegedate, string namespouse, DateTime datebirthSpouse);
 
         IEnumerable<Tither> GetAll();
-        Tither GetById(int id);
+        Tither GetById(Guid id);
 
         Task<IEnumerable<Tither>> GetAllAsync();
-        Task<Tither> GetByIdAsync(int id);
+        Task<Tither> GetByIdAsync(Guid id);
     }
 }

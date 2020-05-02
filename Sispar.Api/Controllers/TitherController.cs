@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     public class TitherController : Controller
     {
@@ -24,16 +23,20 @@ namespace Sispar.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var tithers = await _titherService.GetAllAsync();
+
+            if (tithers == null || tithers.Count() == 0)
+                return NotFound();
+
             return Ok(tithers);
         }
 
         [HttpGet("{id}", Name = "GetById")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var tither = await _titherService.GetByIdAsync(id);
 
             if (tither == null)
-                return BadRequest("Dizimista não encontrado");
+                return NotFound();
 
             return Ok(tither);
         }

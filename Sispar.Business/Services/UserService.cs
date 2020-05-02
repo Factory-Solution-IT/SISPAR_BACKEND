@@ -30,7 +30,7 @@ namespace Sispar.Business.Services
             return _ctx.GetAll();
         }
 
-        public User GetById(int id)
+        public User GetById(Guid id)
         {
             return _ctx.GetById(id);
         }
@@ -75,7 +75,7 @@ namespace Sispar.Business.Services
             return await _ctx.GetAllAsync();
         }
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<User> GetByIdAsync(Guid id)
         {
             return await _ctx.GetByIdAsync(id);
         }
