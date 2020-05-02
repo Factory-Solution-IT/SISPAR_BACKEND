@@ -26,7 +26,7 @@ namespace Sispar.Api.Controllers
 
             if (tithers == null || tithers.Count() == 0)
                 return NotFound();
-                
+
             return Ok(tithers);
         }
 
@@ -36,7 +36,7 @@ namespace Sispar.Api.Controllers
             var tither = await _titherService.GetByIdAsync(id);
 
             if (tither == null)
-                return BadRequest("Dizimista não encontrado");
+                return NotFound();
 
             return Ok(tither);
         }
