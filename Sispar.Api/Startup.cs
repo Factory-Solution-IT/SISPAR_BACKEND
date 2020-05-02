@@ -31,7 +31,7 @@ namespace Sispar.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // Bearer ou Basic (Usuario|Senha) em Base64
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
@@ -73,7 +73,7 @@ namespace Sispar.Api
 
                     };
                 });
-
+                */
 
             // Add Swagger
             services.AddSwaggerGen(s => {
