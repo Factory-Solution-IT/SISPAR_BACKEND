@@ -6,19 +6,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sispar.Api.Models.Tither;
 
 namespace Sispar.Api.Controllers
 {
     [Route("api/[controller]")]
-    public class TitherController : Controller
+    public class TithersController : Controller
     {
         private readonly ITitherService _titherService;
 
-        public TitherController(ITitherService titherService)
+        public TithersController(ITitherService titherService)
         {
             _titherService = titherService;
         }
 
+        //GET api/tithers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -30,6 +32,7 @@ namespace Sispar.Api.Controllers
             return Ok(tithers);
         }
 
+        //GET api/tithers/{id}
         [HttpGet("{id}", Name = "GetById")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -42,7 +45,7 @@ namespace Sispar.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add([FromBody] Models.Tither.AddVM model)
+        public IActionResult Add([FromBody] AddVM model)
         {
             try
             {
