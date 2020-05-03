@@ -44,20 +44,7 @@ namespace Sispar.Api.Controllers
             return Ok(tither);
         }
 
-        [HttpPost]
-        public IActionResult Add([FromBody] AddVM model)
-        {
-            try
-            {
-                var newTither = _titherService.Register(model.Name, model.Address, model.Birthdate, model.Cpf, model.Telephone, model.Cellphone, model.Marriegedate, model.NameSpouse, model.DatebirthSpouse);
-                return CreatedAtRoute("GetById", new { newTither.Id }, newTither);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
+        
         protected override void Dispose(bool disposing)
         {
             _titherService.Dispose();
