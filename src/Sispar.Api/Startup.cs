@@ -1,10 +1,9 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,16 +16,18 @@ namespace Sispar.Api
 {
     public class Startup
     {
-        private readonly IConfiguration _config;
         public Startup(IConfiguration configuration)
         {
-            _config = configuration;
+            Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -68,14 +69,14 @@ namespace Sispar.Api
                         OnTokenValidated = context => {
                             // ctx.Log.Add(new Log(){})
                             // ctx.Savechanges()
-                            // Debug.WriteLine("usu√°rio autenticado: " + context.HttpContext.User.Claims);
+                            // Debug.WriteLine("usu·rio autenticado: " + context.HttpContext.User.Claims);
                             return Task.CompletedTask;
                         },
 
                         OnAuthenticationFailed = context => {
                             // ctx.Log.Add(new Log(){})
                             // ctx.Savechanges()
-                            // Debug.WriteLine("usu√°rio n√£o autenticado: " + context.HttpContext.User.Claims);
+                            // Debug.WriteLine("usu·rio n„o autenticado: " + context.HttpContext.User.Claims);
                             return Task.CompletedTask;
                         }
 
@@ -89,9 +90,9 @@ namespace Sispar.Api
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "Indicadores Econ√¥micos",
+                        Title = "Indicadores EconÙmicos",
                         Version = "v1",
-                        Description = "Exemplo de API REST criada com o ASP.NET Core 3.0 para consulta a indicadores econ√¥micos",
+                        Description = "Exemplo de API REST criada com o ASP.NET Core 3.0 para consulta a indicadores econÙmicos",
                         Contact = new OpenApiContact
                         {
                             Name = "Renato Groffe",
@@ -123,7 +124,7 @@ namespace Sispar.Api
 
             //     /*s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
             //     {
-            //         Description = "Entre com o token<br>(N√ÉO ESQUE√áA DO <strong>bearer</strong> na frente)",
+            //         Description = "Entre com o token<br>(N√O ESQUE«A DO <strong>bearer</strong> na frente)",
             //         Name = "Authorization",
             //          In =  "header",
             //         Type = "apiKey"
@@ -138,16 +139,16 @@ namespace Sispar.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env. IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            //Deve ser antes do MVC
-            // app.UseAuthentication();
-
             app.UseCors("MyPolicy");
+
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseSwagger();
             app.UseSwaggerUI(s => {
