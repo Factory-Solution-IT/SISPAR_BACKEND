@@ -27,6 +27,12 @@ namespace Sispar.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
 
 
             // services.AddDbContext<SisparDataContext>(options => {
@@ -140,6 +146,7 @@ namespace Sispar.Api
             //Deve ser antes do MVC
             // app.UseAuthentication();
 
+            app.UseCors("MyPolicy");
             app.UseRouting();
 
             app.UseSwagger();

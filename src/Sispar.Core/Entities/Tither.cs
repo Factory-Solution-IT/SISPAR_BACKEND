@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sispar.Core.Entities.Enums;
 
 namespace Sispar.Core.Entities
@@ -20,9 +14,7 @@ namespace Sispar.Core.Entities
         public string Cellphone { get; set; }
         public DateTime? MarriegeDate { get; set; }
         public string NameSpouse { get; set; }
-
         public  DateTime? DateBirthSpouse { get; set; }
-
         public Boolean Active { get; set; } = true;
     }
 }
