@@ -101,13 +101,14 @@ namespace Sispar.Api
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "Indicadores Econômicos",
+                        Title = "Sispar - Doc",
                         Version = "v1",
-                        Description = "Exemplo de API REST criada com o ASP.NET Core 3.0 para consulta a indicadores econômicos",
+                        // Description = "Exemplo de API REST criada com o ASP.NET Core 3.0 para consulta a indicadores econômicos",
                         Contact = new OpenApiContact
                         {
-                            Name = "Renato Groffe",
-                            Url = new Uri("https://github.com/renatogroffe")
+                            Email = "factorysolutionit@outlook.com",
+                            Name = "Factory Solution IT",
+                            Url = new Uri("http://factorysolutionit.com.br")
                         }
                     });
             });
@@ -163,7 +164,7 @@ namespace Sispar.Api
 
             app.UseSwagger();
             app.UseSwaggerUI(s => {
-                s.SwaggerEndpoint("/swagger/v1/swagger.json", "FNStoreAPI");
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "SisparAPI");
                 s.RoutePrefix = "api/docs";
             });
 
