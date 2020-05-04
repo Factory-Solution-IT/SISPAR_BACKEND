@@ -10,6 +10,7 @@ namespace Sispar.Core.Contracts
     public interface IRepository<T> : IDisposable where T : Entity
     {
         void Add(T obj);
+        Task AddAsync(T obj);
         void Edit(T obj);
         void Delete(T obj);
 

@@ -33,15 +33,15 @@ namespace Sispar.Business.Services
             _ctx.Dispose();
         }
 
-        public Tither Register(string name, string address, DateTime birthdate, string cpf, string telephone, string cellphone, 
-            DateTime marriegedate, string namespouse, DateTime datebirthSpouse)
+        public async Task<Tither> RegisterAsync(string name, string address, DateTime birthdate, string cpf, string telephone, string cellphone, 
+            DateTime? marriegedate, string namespouse, DateTime? datebirthSpouse)
         {
             var tither = new Tither() {
                 Name = name, Address = address, BirthDate = birthdate, CPF = cpf, Telephone = telephone,
                 Cellphone = cellphone, MarriegeDate = marriegedate, NameSpouse = namespouse, DateBirthSpouse = datebirthSpouse
             };
 
-            _ctx.Add(tither);
+            await _ctx.AddAsync(tither);
 
             return tither;
         }

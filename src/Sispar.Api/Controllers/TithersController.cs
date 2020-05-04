@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Sispar.Api.Models.Tither;
 using AutoMapper;
 using Sispar.Api.Dtos;
+using Sispar.Api.Dtos.Tithers;
 
 namespace Sispar.Api.Controllers
 {
@@ -37,8 +38,8 @@ namespace Sispar.Api.Controllers
         }
 
         //GET api/tithers/{id}
-        [HttpGet("{id}", Name = "GetById")]
-        public async Task<IActionResult> GetById(Guid id)
+        [HttpGet("{id}", Name = "GetTitherById")]
+        public async Task<IActionResult> GetTitherById(Guid id)
         {
             var tither = await _titherService.GetByIdAsync(id);
 
@@ -47,7 +48,27 @@ namespace Sispar.Api.Controllers
 
             return Ok(_mapper.Map<TitherReadDto>(tither));
         }
-        
+
+        //POST api/tithers
+        [HttpPost]
+        public async Task<IActionResult> CreateTither([FromBody] TitherCreateDto titherCreateDto)
+        {
+            var tither = await _titherService.RegisterAsync(
+                titherCreateDto.Name,
+                titherCreateDto.Address,
+                titherCreateDto.BirthDate,
+                titherCreateDto.CPF,
+                titherCreateDto.Telephone,
+                titherCreateDto.Cellphone,
+                titherCreateDto.MarriegeDate,
+                titherCreateDto.NameSpouse,
+                titherCreateDto.DateBirthSpouse
+                );
+
+            var titherReadDto = _mapper.Map<TitherReadDto>(tither);
+            return CreatedAtRoute(nameof(GetTitherById), new { titherReadDto.Id }, titherReadDto);
+        }
+
         protected override void Dispose(bool disposing)
         {
             _titherService.Dispose();

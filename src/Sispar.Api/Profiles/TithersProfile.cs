@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Sispar.Api.Dtos;
+using Sispar.Api.Dtos.Tithers;
 using Sispar.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Sispar.Api.Profiles
         {
             //Source -> Target
             CreateMap<Tither, TitherReadDto>();
-            //CreateMap<CommandCreateDto, Command>();
+            CreateMap<TitherCreateDto, Tither>();
             //CreateMap<CommandUpdateDto, Command>();
             //CreateMap<Command, CommandUpdateDto>();
         }

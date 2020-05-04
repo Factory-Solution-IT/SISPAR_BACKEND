@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Dtos
+namespace Sispar.Api.Dtos.Tithers
 {
-    public class TitherReadDto
+    public class TitherCreateDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public int MatiralStatus { get; set; }

@@ -24,6 +24,12 @@ namespace Sispar.Infra.EF.Repositories
             _context.SaveChanges();
         }
 
+        public async Task AddAsync(T obj)
+        {
+            await _context.AddAsync(obj);
+            await _context.SaveChangesAsync();
+        }
+
         public void Delete(T obj)
         {
             _context.Remove(obj);

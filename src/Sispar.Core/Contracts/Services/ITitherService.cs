@@ -9,8 +9,8 @@ namespace Sispar.Core.Contracts.Services
 {
     public interface ITitherService : IDisposable
     {
-        Tither Register(string name, string address, DateTime birthdate, string cpf, string telephone, string cellphone, 
-            DateTime marriegedate, string namespouse, DateTime datebirthSpouse);
+        Task<Tither> RegisterAsync(string name, string address, DateTime birthdate, string cpf, string telephone, string cellphone, 
+            DateTime? marriegedate, string namespouse, DateTime? datebirthSpouse);
 
         IEnumerable<Tither> GetAll();
         Tither GetById(Guid id);
