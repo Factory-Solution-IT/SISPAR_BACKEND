@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Sispar.Infra.EF.Repositories
 {
-    public class TitherRepository : Repository<Tither>, ITitherRepository
+    public class EFTitherRepository : EFRepository<Tither>, ITitherRepository
     {
-        public TitherRepository(SisparDataContext context)
+        public EFTitherRepository(SisparDataContext context)
             :base(context)
         {
 

@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Sispar.Infra.EF
 {
-    public class UserRepository : Repository<User>, IUserRepository
+    public class EFUserRepository : EFRepository<User>, IUserRepository
     {
 
-        public UserRepository(SisparDataContext context) : base(context) { }
+        public EFUserRepository(SisparDataContext context) : base(context) { }
 
         public User GetByUserName(string userName)
         {

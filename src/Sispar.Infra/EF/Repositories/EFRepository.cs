@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Sispar.Infra.EF.Repositories
 {
-    public class Repository<T> : IRepository<T> where T: Entity
+    public class EFRepository<T> : IRepository<T> where T: Entity
     {
         protected readonly SisparDataContext _context;
 
-        public Repository(SisparDataContext context)
+        public EFRepository(SisparDataContext context)
         {
             _context = context;
         }
