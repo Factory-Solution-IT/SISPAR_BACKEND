@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Sispar.Startup;
+using AutoMapper;
+using Sispar.Api.Profiles;
 
 namespace Sispar.Api
 {
@@ -34,6 +36,15 @@ namespace Sispar.Api
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
+
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new TithersProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
 
             // services.AddDbContext<SisparDataContext>(options => {

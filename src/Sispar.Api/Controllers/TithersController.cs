@@ -7,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sispar.Api.Models.Tither;
+using AutoMapper;
+using Sispar.Api.Dtos;
 
 namespace Sispar.Api.Controllers
 {
     [Route("api/[controller]")]
     public class TithersController : Controller
     {
+        private readonly IMapper _mapper;
         private readonly ITitherService _titherService;
 
-        public TithersController(ITitherService titherService)
+        public TithersController(IMapper mapper, ITitherService titherService)
         {
+            _mapper = mapper;
             _titherService = titherService;
         }
 
@@ -29,7 +33,7 @@ namespace Sispar.Api.Controllers
             if (tithers == null || tithers.Count() == 0)
                 return NotFound();
 
-            return Ok(tithers);
+            return Ok(_mapper.Map<IEnumerable<TitherReadDto>>(tithers));
         }
 
         //GET api/tithers/{id}
@@ -41,9 +45,8 @@ namespace Sispar.Api.Controllers
             if (tither == null)
                 return NotFound();
 
-            return Ok(tither);
+            return Ok(_mapper.Map<TitherReadDto>(tither));
         }
-
         
         protected override void Dispose(bool disposing)
         {
