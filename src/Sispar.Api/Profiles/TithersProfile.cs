@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Sispar.Api.Dtos.Tithers;
+using Sispar.Core.Dtos;
 using Sispar.Core.Entities;
 using System;
 using System.Collections.Generic;

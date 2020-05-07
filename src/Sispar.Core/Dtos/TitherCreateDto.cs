@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
-namespace Sispar.Api.Dtos.Tithers
+namespace Sispar.Core.Dtos
 {
-    public class TitherReadDto
+    public class TitherCreateDto
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public int MatiralStatus { get; set; }
@@ -18,6 +13,6 @@ namespace Sispar.Api.Dtos.Tithers
         public string Cellphone { get; set; }
         public DateTime? MarriegeDate { get; set; }
         public string NameSpouse { get; set; }
-        public DateTime? DateBirthSpouse { get; set; }
+        public  DateTime? DateBirthSpouse { get; set; }
     }
 }

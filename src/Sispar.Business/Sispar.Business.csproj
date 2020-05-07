@@ -9,4 +9,8 @@
     <ProjectReference Include="..\Sispar.Core\Sispar.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
 </Project>

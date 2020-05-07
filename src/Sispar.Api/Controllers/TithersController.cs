@@ -4,16 +4,14 @@ using Sispar.Core.Contracts.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Sispar.Api.Models.Tither;
 using AutoMapper;
-using Sispar.Api.Dtos;
-using Sispar.Api.Dtos.Tithers;
+using Sispar.Core.Dtos;
 
 namespace Sispar.Api.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class TithersController : Controller
     {
         private readonly IMapper _mapper;
@@ -51,21 +49,12 @@ namespace Sispar.Api.Controllers
 
         //POST api/tithers
         [HttpPost]
-        public async Task<IActionResult> CreateTither([FromBody] TitherCreateDto titherCreateDto)
+        public async Task<IActionResult> CreateTither(TitherCreateDto titherCreateDto)
         {
-            var tither = await _titherService.RegisterAsync(
-                titherCreateDto.Name,
-                titherCreateDto.Address,
-                titherCreateDto.BirthDate,
-                titherCreateDto.CPF,
-                titherCreateDto.Telephone,
-                titherCreateDto.Cellphone,
-                titherCreateDto.MarriegeDate,
-                titherCreateDto.NameSpouse,
-                titherCreateDto.DateBirthSpouse
-                );
+            var tither = await _titherService.RegisterAsync(titherCreateDto);
 
             var titherReadDto = _mapper.Map<TitherReadDto>(tither);
+
             return CreatedAtRoute(nameof(GetTitherById), new { titherReadDto.Id }, titherReadDto);
         }
 

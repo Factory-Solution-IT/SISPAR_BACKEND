@@ -1,4 +1,5 @@
-﻿using Sispar.Core.Entities;
+﻿using Sispar.Core.Dtos;
+using Sispar.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,7 @@ namespace Sispar.Core.Contracts.Services
 {
     public interface ITitherService : IDisposable
     {
-        Task<Tither> RegisterAsync(string name, string address, DateTime birthdate, string cpf, string telephone, string cellphone, 
-            DateTime? marriegedate, string namespouse, DateTime? datebirthSpouse);
-
-        IEnumerable<Tither> GetAll();
-        Tither GetById(Guid id);
-
+        Task<Tither> RegisterAsync(TitherCreateDto titherCreateDto);
         Task<IEnumerable<Tither>> GetAllAsync();
         Task<Tither> GetByIdAsync(Guid id);
     }
