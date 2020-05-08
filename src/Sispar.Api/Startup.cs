@@ -13,6 +13,8 @@ using Microsoft.OpenApi.Models;
 using Sispar.Startup;
 using AutoMapper;
 using Sispar.Api.Profiles;
+using MediatR;
+using System.Reflection;
 
 namespace Sispar.Api
 {
@@ -80,14 +82,14 @@ namespace Sispar.Api
                         OnTokenValidated = context => {
                             // ctx.Log.Add(new Log(){})
                             // ctx.Savechanges()
-                            // Debug.WriteLine("usuário autenticado: " + context.HttpContext.User.Claims);
+                            // Debug.WriteLine("usuï¿½rio autenticado: " + context.HttpContext.User.Claims);
                             return Task.CompletedTask;
                         },
 
                         OnAuthenticationFailed = context => {
                             // ctx.Log.Add(new Log(){})
                             // ctx.Savechanges()
-                            // Debug.WriteLine("usuário não autenticado: " + context.HttpContext.User.Claims);
+                            // Debug.WriteLine("usuï¿½rio nï¿½o autenticado: " + context.HttpContext.User.Claims);
                             return Task.CompletedTask;
                         }
 
@@ -103,7 +105,7 @@ namespace Sispar.Api
                     {
                         Title = "Sispar - Doc",
                         Version = "v1",
-                        // Description = "Exemplo de API REST criada com o ASP.NET Core 3.0 para consulta a indicadores econômicos",
+                        // Description = "Exemplo de API REST criada com o ASP.NET Core 3.0 para consulta a indicadores econï¿½micos",
                         Contact = new OpenApiContact
                         {
                             Email = "factorysolutionit@outlook.com",
@@ -136,7 +138,7 @@ namespace Sispar.Api
 
             //     /*s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
             //     {
-            //         Description = "Entre com o token<br>(NÃO ESQUEÇA DO <strong>bearer</strong> na frente)",
+            //         Description = "Entre com o token<br>(Nï¿½O ESQUEï¿½A DO <strong>bearer</strong> na frente)",
             //         Name = "Authorization",
             //          In =  "header",
             //         Type = "apiKey"
@@ -146,6 +148,7 @@ namespace Sispar.Api
             // });
 
             DependencyResolver.Resolve(services);
+            services.AddMediatR(Assembly.GetExecutingAssembly());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
