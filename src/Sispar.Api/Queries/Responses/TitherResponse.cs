@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Models.Tither
+namespace Sispar.Api.Queries.Responses
 {
-    public class AddVM
+    public class TitherResponse
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public DateTime Birthdate { get; set; }
-        public string Cpf { get; set; }
+        public int MatiralStatus { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string CPF { get; set; }
         public string Telephone { get; set; }
         public string Cellphone { get; set; }
-        public DateTime Marriegedate { get; set; }
+        public DateTime? MarriegeDate { get; set; }
         public string NameSpouse { get; set; }
-        public DateTime DatebirthSpouse { get; set; }
+        public DateTime? DateBirthSpouse { get; set; }
     }
 }

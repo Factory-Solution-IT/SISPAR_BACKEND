@@ -1,77 +1,66 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Sispar.Core.Contracts.Services;
+using Sispar.Api.Commands.Requests;
+using Sispar.Api.Queries.Handlers;
+using Sispar.Api.Queries.Requests;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Sispar.Api.Models.Tither;
-using AutoMapper;
-using Sispar.Api.Dtos;
-using Sispar.Api.Dtos.Tithers;
 
 namespace Sispar.Api.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
     public class TithersController : Controller
     {
-        private readonly IMapper _mapper;
-        private readonly ITitherService _titherService;
+        private readonly IMediator _mediator;
 
-        public TithersController(IMapper mapper, ITitherService titherService)
+        public TithersController(IMediator mediator)
         {
-            _mapper = mapper;
-            _titherService = titherService;
+            _mediator = mediator;
         }
 
         //GET api/tithers
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllTithers()
         {
-            var tithers = await _titherService.GetAllAsync();
+            var query = new GetAllTithersQuery();
+            var result = await _mediator.Send(query);
 
-            if (tithers == null || tithers.Count() == 0)
-                return NotFound();
-
-            return Ok(_mapper.Map<IEnumerable<TitherReadDto>>(tithers));
+            return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
         }
 
         //GET api/tithers/{id}
         [HttpGet("{id}", Name = "GetTitherById")]
         public async Task<IActionResult> GetTitherById(Guid id)
         {
-            var tither = await _titherService.GetByIdAsync(id);
+            var query = new GetTitherByIdQuery(id);
+            var result = await _mediator.Send(query);
 
-            if (tither == null)
-                return NotFound();
-
-            return Ok(_mapper.Map<TitherReadDto>(tither));
+            return (result == null) ? NotFound() : (IActionResult)Ok(result);
         }
 
         //POST api/tithers
         [HttpPost]
-        public async Task<IActionResult> CreateTither([FromBody] TitherCreateDto titherCreateDto)
+        public async Task<IActionResult> CreateTither(CreateTitherRequest createTitherRequest)
         {
-            var tither = await _titherService.RegisterAsync(
-                titherCreateDto.Name,
-                titherCreateDto.Address,
-                titherCreateDto.BirthDate,
-                titherCreateDto.CPF,
-                titherCreateDto.Telephone,
-                titherCreateDto.Cellphone,
-                titherCreateDto.MarriegeDate,
-                titherCreateDto.NameSpouse,
-                titherCreateDto.DateBirthSpouse
-                );
+            var result = await _mediator.Send(createTitherRequest);
+            return CreatedAtRoute(nameof(GetTitherById), new { result.Id }, result);
+        }
 
-            var titherReadDto = _mapper.Map<TitherReadDto>(tither);
-            return CreatedAtRoute(nameof(GetTitherById), new { titherReadDto.Id }, titherReadDto);
+        // DELETE api/tithers/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTither(Guid id)
+        {
+            var request = new DeleteTitherRequest(id);
+            await _mediator.Send(request);
+
+            return NoContent();
         }
 
         protected override void Dispose(bool disposing)
         {
-            _titherService.Dispose();
+            //_titherService.Dispose();
         }
     }
 }

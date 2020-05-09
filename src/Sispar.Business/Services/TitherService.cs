@@ -1,49 +1,22 @@
-﻿using Sispar.Core.Contracts;
+﻿using AutoMapper;
+using Sispar.Core.Contracts;
 using Sispar.Core.Contracts.Services;
 using Sispar.Core.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sispar.Business.Services
 {
     public class TitherService : ITitherService
     {
+        private readonly IMapper _mapper;
         private readonly ITitherRepository _ctx;
 
-        public TitherService(ITitherRepository titherRepository)
+        public TitherService(IMapper mapper, ITitherRepository titherRepository)
         {
+            _mapper = mapper;
             _ctx = titherRepository;
-        }
-
-        public IEnumerable<Tither> GetAll()
-        {
-            return _ctx.GetAll();
-        }
-
-        public Tither GetById(Guid id)
-        {
-            return _ctx.GetById(id);
-        }
-
-        public void Dispose()
-        {
-            _ctx.Dispose();
-        }
-
-        public async Task<Tither> RegisterAsync(string name, string address, DateTime birthdate, string cpf, string telephone, string cellphone, 
-            DateTime? marriegedate, string namespouse, DateTime? datebirthSpouse)
-        {
-            var tither = new Tither() {
-                Name = name, Address = address, BirthDate = birthdate, CPF = cpf, Telephone = telephone,
-                Cellphone = cellphone, MarriegeDate = marriegedate, NameSpouse = namespouse, DateBirthSpouse = datebirthSpouse
-            };
-
-            await _ctx.AddAsync(tither);
-
-            return tither;
         }
 
         public async Task<IEnumerable<Tither>> GetAllAsync()
@@ -56,10 +29,19 @@ namespace Sispar.Business.Services
             return await _ctx.GetByIdAsync(id);
         }
 
-        public Tither GetById(int id)
+        public async Task<Tither> CreateAsync(Tither tither)
         {
-            throw new NotImplementedException();
+            await _ctx.AddAsync(tither);
+            return tither;
         }
 
+        public async Task RemoveAsync(Guid id)
+        {
+            var tither = await _ctx.GetByIdAsync(id);
+
+            _ctx.Delete(tither);
+        }
+
+        public void Dispose() => _ctx.Dispose();
     }
 }

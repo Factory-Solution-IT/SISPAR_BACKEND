@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Sispar.Api.Commands.Responses;
+using System;
 
-namespace Sispar.Api.Dtos.Tithers
+namespace Sispar.Api.Commands.Requests
 {
-    public class TitherCreateDto
+    public class CreateTitherRequest : IRequest<CreateTitherResponse>
     {
         public string Name { get; set; }
         public string Address { get; set; }

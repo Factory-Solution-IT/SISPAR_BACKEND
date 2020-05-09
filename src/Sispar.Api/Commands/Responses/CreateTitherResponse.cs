@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Dtos.Tithers
+namespace Sispar.Api.Commands.Responses
 {
-    public class TitherReadDto
+    public class CreateTitherResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

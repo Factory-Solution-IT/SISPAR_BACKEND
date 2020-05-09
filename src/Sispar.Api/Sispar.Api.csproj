@@ -6,10 +6,14 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sispar.Common\Sispar.Common.csproj" />
+    <ProjectReference Include="..\Sispar.Core\Sispar.Core.csproj" />
     <ProjectReference Include="..\Sispar.Startup\Sispar.Startup.csproj" />
   </ItemGroup>
 

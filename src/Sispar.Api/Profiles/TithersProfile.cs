@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using Sispar.Api.Dtos.Tithers;
+using Sispar.Api.Commands.Requests;
+using Sispar.Api.Commands.Responses;
+using Sispar.Api.Queries.Responses;
 using Sispar.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sispar.Api.Profiles
 {
@@ -14,8 +11,11 @@ namespace Sispar.Api.Profiles
         public TithersProfile()
         {
             //Source -> Target
-            CreateMap<Tither, TitherReadDto>();
-            CreateMap<TitherCreateDto, Tither>();
+            CreateMap<Tither, TitherResponse>();
+            CreateMap<Tither, CreateTitherResponse>();
+            CreateMap<CreateTitherRequest, Tither>();
+            //CreateMap<TitherCreateDto, Tither>();
+
             //CreateMap<CommandUpdateDto, Command>();
             //CreateMap<Command, CommandUpdateDto>();
         }

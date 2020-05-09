@@ -1,21 +1,18 @@
 ﻿using Sispar.Core.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sispar.Core.Contracts.Services
 {
     public interface ITitherService : IDisposable
     {
-        Task<Tither> RegisterAsync(string name, string address, DateTime birthdate, string cpf, string telephone, string cellphone, 
-            DateTime? marriegedate, string namespouse, DateTime? datebirthSpouse);
-
-        IEnumerable<Tither> GetAll();
-        Tither GetById(Guid id);
+        Task<Tither> CreateAsync(Tither tither);
 
         Task<IEnumerable<Tither>> GetAllAsync();
+
         Task<Tither> GetByIdAsync(Guid id);
+
+        Task RemoveAsync(Guid id);
     }
 }
