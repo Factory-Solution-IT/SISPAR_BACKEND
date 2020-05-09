@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using Sispar.Core.Contracts;
 using Sispar.Core.Contracts.Services;
-using Sispar.Core.Dtos;
 using Sispar.Core.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sispar.Business.Services
@@ -22,14 +19,6 @@ namespace Sispar.Business.Services
             _ctx = titherRepository;
         }
 
-        public async Task<Tither> RegisterAsync(TitherCreateDto titherCreateDto)
-        {
-            var tither = _mapper.Map<Tither>(titherCreateDto);
-            
-            await _ctx.AddAsync(tither);
-            return tither;
-        }
-
         public async Task<IEnumerable<Tither>> GetAllAsync()
         {
             return await _ctx.GetAllAsync();
@@ -38,6 +27,19 @@ namespace Sispar.Business.Services
         public async Task<Tither> GetByIdAsync(Guid id)
         {
             return await _ctx.GetByIdAsync(id);
+        }
+
+        public async Task<Tither> CreateAsync(Tither tither)
+        {
+            await _ctx.AddAsync(tither);
+            return tither;
+        }
+
+        public async Task RemoveAsync(Guid id)
+        {
+            var tither = await _ctx.GetByIdAsync(id);
+
+            _ctx.Delete(tither);
         }
 
         public void Dispose() => _ctx.Dispose();

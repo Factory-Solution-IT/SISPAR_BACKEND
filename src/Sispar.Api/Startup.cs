@@ -1,20 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Sispar.Startup;
-using AutoMapper;
 using Sispar.Api.Profiles;
-using MediatR;
-using System.Reflection;
+using Sispar.Startup;
+using System;
 
 namespace Sispar.Api
 {
@@ -48,7 +42,6 @@ namespace Sispar.Api
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-
             // services.AddDbContext<SisparDataContext>(options => {
             //     //options.UseSqlServer("Server=sql5059.site4now.net;Database=DB_A5E01E_sisparhomolog;User Id=DB_A5E01E_sisparhomolog_admin;Password=metal001;");
             //     options.UseSqlServer(_config.GetConnectionString("SisparDbConn"));
@@ -58,7 +51,6 @@ namespace Sispar.Api
                 .AddJwtBearer(options => {
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
-
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateLifetime = true,
@@ -72,13 +64,10 @@ namespace Sispar.Api
                         ),
 
                         ClockSkew = System.TimeSpan.Zero
-
-
                     };
 
                     options.Events = new JwtBearerEvents()
                     {
-
                         OnTokenValidated = context => {
                             // ctx.Log.Add(new Log(){})
                             // ctx.Savechanges()
@@ -92,14 +81,12 @@ namespace Sispar.Api
                             // Debug.WriteLine("usu�rio n�o autenticado: " + context.HttpContext.User.Claims);
                             return Task.CompletedTask;
                         }
-
-
                     };
                 });
                 */
 
-            services.AddSwaggerGen(c => {
-
+            services.AddSwaggerGen(c =>
+            {
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
@@ -117,7 +104,6 @@ namespace Sispar.Api
 
             // Add Swagger
             // services.AddSwaggerGen(s => {
-
             //     s.SwaggerDoc("v1", new OpenApiInfo
             //     {
             //         Title = "Sispar - Doc",
@@ -129,7 +115,6 @@ namespace Sispar.Api
             //             Url = new Uri("http://factorysolutionit.com.br")
             //         }
             //     });
-
 
             //     /*var security = new Dictionary<string, IEnumerable<string>>
             //     {
@@ -148,7 +133,8 @@ namespace Sispar.Api
             // });
 
             DependencyResolver.Resolve(services);
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -166,7 +152,8 @@ namespace Sispar.Api
             app.UseAuthorization();
 
             app.UseSwagger();
-            app.UseSwaggerUI(s => {
+            app.UseSwaggerUI(s =>
+            {
                 s.SwaggerEndpoint("/swagger/v1/swagger.json", "SisparAPI");
                 s.RoutePrefix = "api/docs";
             });

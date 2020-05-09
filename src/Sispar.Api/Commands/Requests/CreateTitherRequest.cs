@@ -1,10 +1,11 @@
+﻿using MediatR;
+using Sispar.Api.Commands.Responses;
 using System;
 
-namespace Sispar.Core.Dtos
+namespace Sispar.Api.Commands.Requests
 {
-    public class TitherReadDto
+    public class CreateTitherRequest : IRequest<CreateTitherResponse>
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public int MatiralStatus { get; set; }
@@ -14,6 +15,6 @@ namespace Sispar.Core.Dtos
         public string Cellphone { get; set; }
         public DateTime? MarriegeDate { get; set; }
         public string NameSpouse { get; set; }
-        public  DateTime? DateBirthSpouse { get; set; }
+        public DateTime? DateBirthSpouse { get; set; }
     }
 }
