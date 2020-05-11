@@ -14,7 +14,7 @@ namespace Sispar.Api.Profiles
             CreateMap<Tither, TitherResponse>();
             CreateMap<Tither, CreateTitherResponse>();
             CreateMap<CreateTitherRequest, Tither>();
-            //CreateMap<TitherCreateDto, Tither>();
+            CreateMap<UpdateTitherRequest, Tither>();
 
             //CreateMap<CommandUpdateDto, Command>();
             //CreateMap<Command, CommandUpdateDto>();

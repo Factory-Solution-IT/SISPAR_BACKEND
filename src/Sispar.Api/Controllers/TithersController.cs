@@ -48,6 +48,15 @@ namespace Sispar.Api.Controllers
             return CreatedAtRoute(nameof(GetTitherById), new { result.Id }, result);
         }
 
+        //PUT api/tithers
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTither(Guid id, UpdateTitherRequest updateTitherRequest)
+        {
+            updateTitherRequest.Id = id;
+            await _mediator.Send(updateTitherRequest);
+            return NoContent();        
+        }
+
         // DELETE api/tithers/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTither(Guid id)

@@ -8,6 +8,7 @@ namespace Sispar.Core.Contracts.Services
     public interface ITitherService : IDisposable
     {
         Task<Tither> CreateAsync(Tither tither);
+        Task EditAsync(Tither tither);
 
         Task<IEnumerable<Tither>> GetAllAsync();
 
