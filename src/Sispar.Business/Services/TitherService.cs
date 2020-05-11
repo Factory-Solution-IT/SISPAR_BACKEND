@@ -42,6 +42,11 @@ namespace Sispar.Business.Services
             _ctx.Delete(tither);
         }
 
+        public async Task EditAsync(Tither tither)
+        {
+            _ctx.Edit(tither);
+        }
+
         public void Dispose() => _ctx.Dispose();
     }
 }
