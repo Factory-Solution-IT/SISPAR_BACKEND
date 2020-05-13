@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sispar.Common.Helpers;
 
-namespace Sispar.Core.Entities
+namespace Sispar.Domain.Entities
 {
     public class User : Entity
     {

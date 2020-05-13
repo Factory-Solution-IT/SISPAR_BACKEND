@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Common", "src\Sispar.Common\Sispar.Common.csproj", "{85A1FC21-3C28-4974-ABBB-EF7D462AC67B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sispar.Core", "src\Sispar.Core\Sispar.Core.csproj", "{2D8F1C8A-F4EA-437C-A8C8-9C3E03661CC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Domain", "src\Sispar.Core\Sispar.Domain.csproj", "{2D8F1C8A-F4EA-437C-A8C8-9C3E03661CC9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Business", "src\Sispar.Business\Sispar.Business.csproj", "{760E5558-7A6D-4F6D-BF91-AF9F474C5601}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Infra", "src\Sispar.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Startup", "src\Sispar.Startup\Sispar.Startup.csproj", "{D4E30F97-47A8-4772-9290-D7E58D1D797C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sispar.Api", "src\Sispar.Api\Sispar.Api.csproj", "{2D75E021-E60C-4300-AA90-438A66EF6ACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Api", "src\Sispar.Api\Sispar.Api.csproj", "{2D75E021-E60C-4300-AA90-438A66EF6ACD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

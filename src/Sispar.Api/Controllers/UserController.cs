@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sispar.Core.Contracts.Services;
+using Sispar.Domain.Contracts.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

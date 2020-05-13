@@ -2,7 +2,7 @@
 using MediatR;
 using Sispar.Api.Commands.Requests;
 using Sispar.Api.Commands.Responses;
-using Sispar.Core.Contracts.Services;
+using Sispar.Domain.Contracts.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -2,7 +2,7 @@
 using Sispar.Api.Commands.Requests;
 using Sispar.Api.Commands.Responses;
 using Sispar.Api.Queries.Responses;
-using Sispar.Core.Entities;
+using Sispar.Domain.Entities;
 
 namespace Sispar.Api.Profiles
 {

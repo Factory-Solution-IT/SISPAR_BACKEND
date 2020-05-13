@@ -1,9 +1,9 @@
-﻿using Sispar.Core.Entities;
+﻿using Sispar.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Sispar.Core.Contracts.Services
+namespace Sispar.Domain.Contracts.Services
 {
     public interface ITitherService : IDisposable
     {

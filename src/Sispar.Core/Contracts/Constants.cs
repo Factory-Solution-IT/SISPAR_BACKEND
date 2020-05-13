@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Core.Contracts
+namespace Sispar.Domain.Contracts
 {
     public class Constants
     {

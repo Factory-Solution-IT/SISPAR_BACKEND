@@ -1,6 +1,6 @@
-﻿using Sispar.Core.Contracts;
-using Sispar.Core.Contracts.Services;
-using Sispar.Core.Entities;
+﻿using Sispar.Domain.Contracts;
+using Sispar.Domain.Contracts.Services;
+using Sispar.Domain.Entities;
 using System;
 using Sispar.Common.Helpers;
 using System.Collections.Generic;
