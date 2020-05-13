@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sispar.Core.Entities;
+using Sispar.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

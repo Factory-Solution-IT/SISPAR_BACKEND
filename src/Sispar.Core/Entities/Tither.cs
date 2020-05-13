@@ -1,7 +1,7 @@
 ﻿using System;
-using Sispar.Core.Entities.Enums;
+using Sispar.Domain.Entities.Enums;
 
-namespace Sispar.Core.Entities
+namespace Sispar.Domain.Entities
 {
     public class Tither : Entity
     {

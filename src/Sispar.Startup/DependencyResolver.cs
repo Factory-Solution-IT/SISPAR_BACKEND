@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sispar.Business.Services;
-using Sispar.Core.Contracts;
-using Sispar.Core.Contracts.Services;
+using Sispar.Domain.Contracts;
+using Sispar.Domain.Contracts.Services;
 using Sispar.Infra.EF;
 using Sispar.Infra.EF.Repositories;
 using System;

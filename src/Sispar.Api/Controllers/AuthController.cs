@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Sispar.Core.Contracts.Services;
-using Sispar.Core.Entities;
+using Sispar.Domain.Contracts.Services;
+using Sispar.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
