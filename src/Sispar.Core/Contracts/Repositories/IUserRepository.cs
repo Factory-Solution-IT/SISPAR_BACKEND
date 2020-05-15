@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Domain.Contracts
+namespace Sispar.Domain.Contracts.Repositories
 {
     public interface IUserRepository : IRepository<User>
     {

@@ -1,19 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Sispar.Domain.Contracts;
+﻿using Sispar.Domain.Contracts.Repositories;
 using Sispar.Domain.Entities;
 using Sispar.Infra.EF.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sispar.Infra.EF
 {
     public class EFUserRepository : EFRepository<User>, IUserRepository
     {
-
-        public EFUserRepository(SisparDataContext context) : base(context) { }
+        public EFUserRepository(SisparDataContext context) : base(context)
+        {
+        }
 
         public User GetByUserName(string userName)
         {

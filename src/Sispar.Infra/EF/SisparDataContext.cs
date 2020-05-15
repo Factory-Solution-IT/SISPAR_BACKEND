@@ -21,6 +21,7 @@ namespace Sispar.Infra.EF
 
         // public DbSet<User> Users { get; set; }
         public DbSet<Tither> Tithers { get; set; }
+        public DbSet<Tithe> Tithes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,6 +32,7 @@ namespace Sispar.Infra.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new Maps.TitherMap());
+            modelBuilder.ApplyConfiguration(new Maps.TitheMap());
             // modelBuilder.ApplyConfiguration(new Maps.UserMap());
 
             modelBuilder.Seed();
