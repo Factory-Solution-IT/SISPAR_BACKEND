@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Sispar.Domain.Contracts;
+using Sispar.Domain.Contracts.Repositories;
 using Sispar.Domain.Contracts.Services;
 using Sispar.Domain.Entities;
 using System;

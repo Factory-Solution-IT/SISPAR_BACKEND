@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sispar.Business.Services;
-using Sispar.Domain.Contracts;
+using Sispar.Domain.Contracts.Repositories;
 using Sispar.Domain.Contracts.Services;
 using Sispar.Infra.EF;
 using Sispar.Infra.EF.Repositories;
@@ -28,9 +28,12 @@ namespace Sispar.Startup
             services.AddScoped<SisparDataContext>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUserRepository, EFUserRepository>();
+
+
             services.AddTransient<ITitherService, TitherService>();
             services.AddTransient<ITitherRepository, EFTitherRepository>();
 
+            services.AddTransient<ITitheRepository, EFTitheRepository>();
         }
     }
 }
