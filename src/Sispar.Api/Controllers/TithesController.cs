@@ -51,7 +51,7 @@ namespace Sispar.Api.Controllers
         public async Task<IActionResult> UpdateTithe(Guid id, UpdateTitheRequest updateTitheRequest)
         {
             updateTitheRequest.Id = id;
-            var result = _mediator.Send(updateTitheRequest);
+            await _mediator.Send(updateTitheRequest);
             return NoContent();
         }
 
