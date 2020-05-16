@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
+using Sispar.Api.Commands.Requests;
 using Sispar.Api.Queries.Requests;
 
 namespace Sispar.Api.Controllers
@@ -21,37 +22,45 @@ namespace Sispar.Api.Controllers
             _mediator = mediator;
         }
 
-        // GET: api/Tithes
+        // GET: api/tithes
         [HttpGet]
         public async Task<IActionResult> GetAllTithes()
         {
             var result = await _mediator.Send(new GetAllTithesQuery());
-            return Ok(result);
+            return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
         }
 
-        // GET: api/Tithes/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET: api/tithes/{id}
+        [HttpGet("{id}", Name = "GetTitheById")]
+        public async Task<IActionResult> GetTitheById(Guid id)
         {
-            return "value";
+            var result = await _mediator.Send(new GetTitheByIdQuery(id));
+            return (result == null) ? NotFound() : (IActionResult)Ok(result);
         }
 
-        // POST: api/Tithes
+        // POST: api/tithes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> CreateTithe(CreateTitheRequest createTitheRequest)
         {
+            var result = await _mediator.Send(createTitheRequest);
+            return CreatedAtRoute(nameof(GetTitheById), new { result.Id }, result);
         }
 
-        // PUT: api/Tithes/5
+        // PUT: api/tithes/{id}
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> UpdateTithe(Guid id, UpdateTitheRequest updateTitheRequest)
         {
+            updateTitheRequest.Id = id;
+            var result = _mediator.Send(updateTitheRequest);
+            return NoContent();
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/tithes/{id}
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> DeleteTithe(Guid id)
         {
+            var result = await _mediator.Send(new DeleteTitheRequest(id));
+            return NoContent();
         }
     }
 }

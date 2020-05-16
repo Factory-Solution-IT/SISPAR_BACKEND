@@ -28,7 +28,7 @@ namespace Sispar.Api.Commands.Handlers
             var titherFromRepo = await _titherService.GetByIdAsync(request.Id);
             _mapper.Map(request, titherFromRepo);
 
-            _titherService.EditAsync(titherFromRepo);
+            await _titherService.EditAsync(titherFromRepo);
             var result = new UpdateTitherResponse();
             return await Task.FromResult(result);
         }
