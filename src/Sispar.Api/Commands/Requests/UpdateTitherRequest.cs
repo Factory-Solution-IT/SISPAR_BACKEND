@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Requests
 {
-    public class UpdateTitherRequest : IRequest<UpdateTitherResponse>
+    public class UpdateTitherRequest : IRequest<NoContentResponse>
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

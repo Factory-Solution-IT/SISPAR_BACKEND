@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Handlers
 {
-    public class DeleteTitheHandler : IRequestHandler<DeleteTitheRequest, EmptyTitheResponse>
+    public class DeleteTitheHandler : IRequestHandler<DeleteTitheRequest, NoContentResponse>
     {
         private readonly IMapper _mapper;
         private readonly ITitheRepository _titheRepository;
@@ -23,13 +23,13 @@ namespace Sispar.Api.Commands.Handlers
             _titheRepository = titheRepository;
         }
 
-        public async Task<EmptyTitheResponse> Handle(DeleteTitheRequest request, CancellationToken cancellationToken)
+        public async Task<NoContentResponse> Handle(DeleteTitheRequest request, CancellationToken cancellationToken)
         {
             var tithe = await _titheRepository.GetByIdAsync(request.Id);
 
             _titheRepository.Delete(tithe);
 
-            return await Task.FromResult(new EmptyTitheResponse());
+            return await Task.FromResult(new NoContentResponse());
         }
     }
 }

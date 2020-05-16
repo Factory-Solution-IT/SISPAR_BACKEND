@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Handlers
 {
-    public class UpdateTitherHandler : IRequestHandler<UpdateTitherRequest, UpdateTitherResponse>
+    public class UpdateTitherHandler : IRequestHandler<UpdateTitherRequest, NoContentResponse>
     {
         private readonly IMapper _mapper;
         private readonly ITitherService _titherService;
@@ -23,14 +23,13 @@ namespace Sispar.Api.Commands.Handlers
             _titherService = titherService;
         }
 
-        public async Task<UpdateTitherResponse> Handle(UpdateTitherRequest request, CancellationToken cancellationToken)
+        public async Task<NoContentResponse> Handle(UpdateTitherRequest request, CancellationToken cancellationToken)
         {
             var titherFromRepo = await _titherService.GetByIdAsync(request.Id);
             _mapper.Map(request, titherFromRepo);
 
             await _titherService.EditAsync(titherFromRepo);
-            var result = new UpdateTitherResponse();
-            return await Task.FromResult(result);
+            return await Task.FromResult(new NoContentResponse());
         }
     }
 }
