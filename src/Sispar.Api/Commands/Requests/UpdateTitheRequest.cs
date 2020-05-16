@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Requests
 {
-    public class UpdateTitheRequest : IRequest<EmptyTitheResponse>
+    public class UpdateTitheRequest : IRequest<NoContentResponse>
     {
         public Guid Id { get; set; }
         public decimal ValueContribution { get; set; }

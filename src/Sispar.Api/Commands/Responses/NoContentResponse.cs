@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Responses
 {
-    public class UpdateTitherResponse
+    public class NoContentResponse
     {
         
     }

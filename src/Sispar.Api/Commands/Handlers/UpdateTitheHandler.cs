@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Handlers
 {
-    public class UpdateTitheHandler : IRequestHandler<UpdateTitheRequest, EmptyTitheResponse>
+    public class UpdateTitheHandler : IRequestHandler<UpdateTitheRequest, NoContentResponse>
     {
         private readonly IMapper _mapper;
         private readonly ITitheRepository _titheRepository;
@@ -23,7 +23,7 @@ namespace Sispar.Api.Commands.Handlers
             _titheRepository = titheRepository;
         }
 
-        public async Task<EmptyTitheResponse> Handle(UpdateTitheRequest request, CancellationToken cancellationToken)
+        public async Task<NoContentResponse> Handle(UpdateTitheRequest request, CancellationToken cancellationToken)
         {
             var titheFromRepo = await _titheRepository.GetByIdAsync(request.Id);
 
@@ -31,7 +31,7 @@ namespace Sispar.Api.Commands.Handlers
 
             _titheRepository.Edit(titheFromRepo);
 
-            return await Task.FromResult(new EmptyTitheResponse());
+            return await Task.FromResult(new NoContentResponse());
         }
     }
 }
