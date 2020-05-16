@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Requests
 {
-    public class DeleteTitherRequest : IRequest<DeleteTitherResponse>
+    public class DeleteTitherRequest : IRequest<NoContentResponse>
     {
         public Guid Id { get; set; }
 

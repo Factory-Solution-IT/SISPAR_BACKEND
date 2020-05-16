@@ -29,8 +29,6 @@ namespace Sispar.Startup
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUserRepository, EFUserRepository>();
 
-
-            services.AddTransient<ITitherService, TitherService>();
             services.AddTransient<ITitherRepository, EFTitherRepository>();
 
             services.AddTransient<ITitheRepository, EFTitheRepository>();

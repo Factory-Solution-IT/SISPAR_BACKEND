@@ -19,7 +19,7 @@ namespace Sispar.Infra.EF
 
         public async Task<User> GetByUserNameAsync(string userName)
         {
-            return null;
+            return await Task.FromResult(new User());
             //return await _context.Users.Where(x => x.Username.Contains(userName)).FirstOrDefaultAsync();
         }
     }
