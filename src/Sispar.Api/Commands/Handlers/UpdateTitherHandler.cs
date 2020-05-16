@@ -2,11 +2,7 @@
 using MediatR;
 using Sispar.Api.Commands.Requests;
 using Sispar.Api.Commands.Responses;
-using Sispar.Domain.Contracts.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Sispar.Domain.Contracts.Repositories;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,20 +11,20 @@ namespace Sispar.Api.Commands.Handlers
     public class UpdateTitherHandler : IRequestHandler<UpdateTitherRequest, NoContentResponse>
     {
         private readonly IMapper _mapper;
-        private readonly ITitherService _titherService;
+        private readonly ITitherRepository _titherRepository;
 
-        public UpdateTitherHandler(IMapper mapper, ITitherService titherService)
+        public UpdateTitherHandler(IMapper mapper, ITitherRepository titherRepository)
         {
             _mapper = mapper;
-            _titherService = titherService;
+            _titherRepository = titherRepository;
         }
 
         public async Task<NoContentResponse> Handle(UpdateTitherRequest request, CancellationToken cancellationToken)
         {
-            var titherFromRepo = await _titherService.GetByIdAsync(request.Id);
+            var titherFromRepo = await _titherRepository.GetByIdAsync(request.Id);
             _mapper.Map(request, titherFromRepo);
+            _titherRepository.Edit(titherFromRepo);
 
-            await _titherService.EditAsync(titherFromRepo);
             return await Task.FromResult(new NoContentResponse());
         }
     }
