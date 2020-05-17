@@ -8,4 +8,8 @@
     <ProjectReference Include="..\Sispar.Common\Sispar.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\Services\" />
+  </ItemGroup>
+
 </Project>

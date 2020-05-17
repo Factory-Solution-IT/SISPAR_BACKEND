@@ -2,7 +2,7 @@
 using Sispar.Api.Commands.Requests;
 using Sispar.Api.Commands.Responses;
 using Sispar.Api.Queries.Responses;
-using Sispar.Core.Entities;
+using Sispar.Domain.Entities;
 
 namespace Sispar.Api.Profiles
 {
@@ -14,7 +14,7 @@ namespace Sispar.Api.Profiles
             CreateMap<Tither, TitherResponse>();
             CreateMap<Tither, CreateTitherResponse>();
             CreateMap<CreateTitherRequest, Tither>();
-            //CreateMap<TitherCreateDto, Tither>();
+            CreateMap<UpdateTitherRequest, Tither>();
 
             //CreateMap<CommandUpdateDto, Command>();
             //CreateMap<Command, CommandUpdateDto>();

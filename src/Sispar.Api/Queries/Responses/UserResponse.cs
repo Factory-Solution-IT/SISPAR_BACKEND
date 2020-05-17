@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Queries.Responses
 {
-    public class CustomerResponse
+    public class UserResponse
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public DateTime Date { get; set; }
+        public string Username { get; set; }
     }
 }

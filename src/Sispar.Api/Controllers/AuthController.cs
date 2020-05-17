@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Sispar.Core.Contracts.Services;
-using Sispar.Core.Entities;
+using Sispar.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sispar.Api.Controllers
@@ -14,23 +10,24 @@ namespace Sispar.Api.Controllers
     [Route("api/[controller]")]
     public class AuthController : Controller
     {
-        private readonly IUserService _userService;
+        //private readonly IUserService _userService;
         private readonly IConfiguration _config;
 
-        public AuthController(IUserService userService, IConfiguration config)
+        public AuthController(/*IUserService userService,*/ IConfiguration config)
         {
-            _userService = userService;
+            //_userService = userService;
             _config = config;
         }
 
         [HttpPost]
-        public async Task<IActionResult> RequestToken([FromBody] Models.Auth.LoginVM model)
+        public IActionResult RequestToken([FromBody] Models.Auth.LoginVM model)
         {
             try
             {
-                var user = await _userService.LoginAsync(model.Username, model.Password);
+                //var user =  await _userService.LoginAsync(model.Username, model.Password);
 
-                return GenerateToken(user);
+                //return GenerateToken(user);
+                return GenerateToken(new User());
             }
             catch (Exception ex)
             {
@@ -41,7 +38,6 @@ namespace Sispar.Api.Controllers
         private OkObjectResult GenerateToken(User user)
         {
             var claims = new[] {
-
                 // new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
                 // new Claim(JwtRegisteredClaimNames.GivenName, user.Username),
                 new Claim(ClaimTypes.Role, "Admin"),
@@ -63,16 +59,14 @@ namespace Sispar.Api.Controllers
             //     signingCredentials: credentials
             // );
 
-            return Ok(new {  });
-//                new { token = new JwtSecurityTokenHandler().WriteToken(token) }
-//               );
+            return Ok(new { });
+            //                new { token = new JwtSecurityTokenHandler().WriteToken(token) }
+            //               );
         }
-
 
         protected override void Dispose(bool disposing)
         {
-            _userService.Dispose();
+            //_userService.Dispose();
         }
-
     }
 }

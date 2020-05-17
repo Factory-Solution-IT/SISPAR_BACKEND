@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Responses
 {
-    public class DeleteTitherResponse
+    public class CreateUserResponse
     {
-        
+        public Guid Id { get; set; }
+        public string Username { get; set; }
     }
 }

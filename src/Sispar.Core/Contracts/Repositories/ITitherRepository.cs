@@ -1,11 +1,11 @@
-﻿using Sispar.Core.Entities;
+﻿using Sispar.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Core.Contracts
+namespace Sispar.Domain.Contracts.Repositories
 {
     public interface ITitherRepository: IRepository<Tither>
     {

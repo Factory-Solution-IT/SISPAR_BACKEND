@@ -1,15 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Sispar.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sispar.Domain.Entities;
 
 namespace Sispar.Infra.EF
 {
-    public class SisparDataContext: DbContext
+    public class SisparDataContext : DbContext
     {
         private readonly IConfiguration _config;
 
@@ -19,8 +14,9 @@ namespace Sispar.Infra.EF
             Database.EnsureCreated();
         }
 
-        // public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Tither> Tithers { get; set; }
+        public DbSet<Tithe> Tithes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -30,8 +26,9 @@ namespace Sispar.Infra.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new Maps.UserMap());
             modelBuilder.ApplyConfiguration(new Maps.TitherMap());
-            // modelBuilder.ApplyConfiguration(new Maps.UserMap());
+            modelBuilder.ApplyConfiguration(new Maps.TitheMap());
 
             modelBuilder.Seed();
         }

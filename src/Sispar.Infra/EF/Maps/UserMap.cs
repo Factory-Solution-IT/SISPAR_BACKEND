@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Sispar.Core.Entities;
+using Sispar.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,22 +15,22 @@ namespace Sispar.Infra.EF.Maps
         {
     
             // table
-            builder.ToTable("USER");
+            builder.ToTable("USER_");
 
             // pk
             builder.HasKey(pk => pk.Id);
 
             // columns
             builder.Property(c => c.Id)
-                .HasColumnName("USER_ID");
+                .HasColumnName("ID_USER");
             builder.Property(c => c.Username)
                 .IsRequired()
-                .HasColumnName("USER_NAME")
-                .HasColumnType("varchar(100)");
+                .HasColumnName("USERNAME")
+                .HasColumnType("varchar(50)");
             builder.Property(c => c.Password)
                 .IsRequired()
                 .HasColumnName("PASSWORD")
-                .HasColumnType("varchar(100)");
+                .HasColumnType("varchar(50)");
             builder.Property(c => c.Active)
                 .HasColumnName("ACTIVE")
                 .HasColumnType("smallint");

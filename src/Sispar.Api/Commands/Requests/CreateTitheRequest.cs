@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Requests
 {
-    public class DeleteTitherRequest : IRequest<NoContentResponse>
+    public class CreateTitheRequest : IRequest<CreateTitheResponse>
     {
-        public Guid Id { get; set; }
-
-        public DeleteTitherRequest(Guid id)
-        {
-            Id = id;
-        }
+        public decimal ValueContribution { get; set; }
+        public DateTime DateContribution { get; set; }
+        public Guid TitherId { get; set; }
     }
 }

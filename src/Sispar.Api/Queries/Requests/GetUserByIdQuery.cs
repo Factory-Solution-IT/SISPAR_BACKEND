@@ -1,18 +1,18 @@
 ﻿using MediatR;
-using Sispar.Api.Commands.Responses;
+using Sispar.Api.Queries.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands.Requests
+namespace Sispar.Api.Queries.Requests
 {
-    public class DeleteTitherRequest : IRequest<NoContentResponse>
+    public class GetUserByIdQuery : IRequest<UserResponse>
     {
         public Guid Id { get; set; }
 
-        public DeleteTitherRequest(Guid id)
+        public GetUserByIdQuery(Guid id)
         {
             Id = id;
         }

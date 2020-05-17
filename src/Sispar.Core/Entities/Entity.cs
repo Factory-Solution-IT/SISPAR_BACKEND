@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sispar.Core.Entities
+namespace Sispar.Domain.Entities
 {
     public class Entity
     {

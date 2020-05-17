@@ -37,6 +37,8 @@ namespace Sispar.Api
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new TithersProfile());
+                mc.AddProfile(new TitheProfile());
+                mc.AddProfile(new UserProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

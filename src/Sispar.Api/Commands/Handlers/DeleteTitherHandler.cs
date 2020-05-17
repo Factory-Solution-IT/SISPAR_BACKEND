@@ -1,34 +1,24 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Sispar.Api.Commands.Requests;
 using Sispar.Api.Commands.Responses;
-using Sispar.Core.Contracts.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Sispar.Domain.Contracts.Repositories;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sispar.Api.Commands.Handlers
 {
-    public class DeleteTitherHandler : IRequestHandler<DeleteTitherRequest, DeleteTitherResponse>
+    public class DeleteTitherHandler : IRequestHandler<DeleteTitherRequest, NoContentResponse>
     {
-        private readonly IMapper _mapper;
-        private readonly ITitherService _titherService;
+        private readonly ITitherRepository _titherRepository;
 
-        public DeleteTitherHandler(IMapper mapper, ITitherService titherService)
-        {
-            _mapper = mapper;
-            _titherService = titherService;
-        }
+        public DeleteTitherHandler(ITitherRepository titherRepository) => _titherRepository = titherRepository;
 
-        public async Task<DeleteTitherResponse> Handle(DeleteTitherRequest request, CancellationToken cancellationToken)
+        public async Task<NoContentResponse> Handle(DeleteTitherRequest request, CancellationToken cancellationToken)
         {
-            await _titherService.RemoveAsync(request.Id);
-            var result = new DeleteTitherResponse();
-            
-            return await Task.FromResult(result);
+            var tither = await _titherRepository.GetByIdAsync(request.Id);
+            _titherRepository.Delete(tither);
+
+            return await Task.FromResult(new NoContentResponse());
         }
     }
 }

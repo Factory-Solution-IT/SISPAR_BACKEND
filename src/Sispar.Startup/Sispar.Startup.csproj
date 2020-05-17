@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sispar.Core\Sispar.Core.csproj" />
+    <ProjectReference Include="..\Sispar.Core\Sispar.Domain.csproj" />
     <ProjectReference Include="..\Sispar.Infra\Sispar.Infra.csproj" />
   </ItemGroup>
 

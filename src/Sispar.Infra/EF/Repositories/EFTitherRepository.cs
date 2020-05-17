@@ -1,19 +1,13 @@
-﻿using Sispar.Core.Contracts;
-using Sispar.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sispar.Domain.Contracts.Repositories;
+using Sispar.Domain.Entities;
 
 namespace Sispar.Infra.EF.Repositories
 {
     public class EFTitherRepository : EFRepository<Tither>, ITitherRepository
     {
         public EFTitherRepository(SisparDataContext context)
-            :base(context)
+            : base(context)
         {
-
         }
     }
 }

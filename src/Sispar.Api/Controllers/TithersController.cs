@@ -24,8 +24,7 @@ namespace Sispar.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllTithers()
         {
-            var query = new GetAllTithersQuery();
-            var result = await _mediator.Send(query);
+            var result = await _mediator.Send(new GetAllTithersQuery());
 
             return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
         }
@@ -46,6 +45,15 @@ namespace Sispar.Api.Controllers
         {
             var result = await _mediator.Send(createTitherRequest);
             return CreatedAtRoute(nameof(GetTitherById), new { result.Id }, result);
+        }
+
+        //PUT api/tithers
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTither(Guid id, UpdateTitherRequest updateTitherRequest)
+        {
+            updateTitherRequest.Id = id;
+            await _mediator.Send(updateTitherRequest);
+            return NoContent();        
         }
 
         // DELETE api/tithers/{id}
