@@ -1,19 +1,13 @@
-﻿using Sispar.Common.Validation;
+﻿using Sispar.Common.Helpers;
+using Sispar.Common.Validation;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sispar.Common.Helpers;
 
 namespace Sispar.Domain.Entities
 {
     public class User : Entity
     {
         public string Username { get; set; }
-        public string Password { get; set; }
+        public string Password { get; set ; }
         public Boolean Active { get; set; } = true;
 
         public void SetPassword(string password, string confirmPassword)

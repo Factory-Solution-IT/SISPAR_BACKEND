@@ -3,11 +3,7 @@ using MediatR;
 using Sispar.Api.Queries.Requests;
 using Sispar.Api.Queries.Responses;
 using Sispar.Domain.Contracts.Repositories;
-using Sispar.Domain.Contracts.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,6 +19,7 @@ namespace Sispar.Api.Queries.Handlers
             _mapper = mapper;
             _titherRepository = titherRepository;
         }
+
         public async Task<IEnumerable<TitherResponse>> Handle(GetAllTithersQuery request, CancellationToken cancellationToken)
         {
             var tithers = await _titherRepository.GetAllAsync();

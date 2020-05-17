@@ -26,13 +26,7 @@ namespace Sispar.Api.Commands.Handlers
 
         public async Task<CreateTitheResponse> Handle(CreateTitheRequest request, CancellationToken cancellationToken)
         {
-            var tithe = new Tithe()
-            {
-                ValueContribution = request.ValueContribution,
-                DateContribution = request.DateContribution,
-                TitherId = request.TitherId
-            };
-
+            var tithe = _mapper.Map<Tithe>(request);
             await _titheRepository.AddAsync(tithe);
 
             var result = _mapper.Map<CreateTitheResponse>(tithe);
