@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Sispar.Core.Notification;
 using Sispar.Domain.Contracts.Repositories;
 using Sispar.Infra.EF;
 using Sispar.Infra.EF.Repositories;
@@ -19,6 +20,8 @@ namespace Sispar.Startup
             // services.AddSingleton
 
             services.AddScoped<SisparDataContext>();
+            services.AddScoped<NotificationContext>();
+
             services.AddTransient<IUserRepository, EFUserRepository>();
 
             services.AddTransient<ITitherRepository, EFTitherRepository>();
