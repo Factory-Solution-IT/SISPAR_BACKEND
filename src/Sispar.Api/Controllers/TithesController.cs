@@ -38,6 +38,14 @@ namespace Sispar.Api.Controllers
             return (result == null) ? NotFound() : (IActionResult)Ok(result);
         }
 
+        // GET: api/tithes/byTitherId/{id}
+        [HttpGet("bytitherid/{titherId}")]
+        public async Task<IActionResult> GetTithesByTitherId(Guid titherId)
+        {
+            var result = await _mediator.Send(new GetTithesByTitherIdQuery(titherId));
+            return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
+        }
+
         // POST: api/tithes
         [HttpPost]
         public async Task<IActionResult> CreateTithe(CreateTitheRequest createTitheRequest)
