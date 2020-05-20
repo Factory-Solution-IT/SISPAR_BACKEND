@@ -24,6 +24,11 @@ namespace Sispar.Infra.EF.Maps
             builder.Property(c => c.ValueContribution).IsRequired();
             builder.Property(c => c.DateContribution).IsRequired().HasColumnType("date");
             builder.Property(c => c.TitherId).IsRequired();
+
+            // relationships
+            builder.HasOne(c => c.Tither)
+              .WithMany(c => c.Tithes)
+              .HasForeignKey(c => c.TitherId);
         }
     }
 }

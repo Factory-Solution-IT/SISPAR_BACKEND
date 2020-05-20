@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Sispar.Domain.Entities.Enums;
 
 namespace Sispar.Domain.Entities
@@ -16,5 +17,7 @@ namespace Sispar.Domain.Entities
         public string NameSpouse { get; set; }
         public  DateTime? DateBirthSpouse { get; set; }
         public Boolean Active { get; set; } = true;
+
+        public virtual ICollection<Tithe> Tithes { get; set; } = new List<Tithe>();
     }
 }
