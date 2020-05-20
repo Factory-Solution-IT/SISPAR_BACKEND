@@ -1,15 +1,20 @@
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Sispar.Api.Filters;
 using Sispar.Api.Profiles;
 using Sispar.Startup;
 using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Sispar.Api
 {
@@ -49,9 +54,11 @@ namespace Sispar.Api
             //     //options.UseSqlServer("Server=sql5059.site4now.net;Database=DB_A5E01E_sisparhomolog;User Id=DB_A5E01E_sisparhomolog_admin;Password=metal001;");
             //     options.UseSqlServer(_config.GetConnectionString("SisparDbConn"));
             // });
+
             // Bearer ou Basic (Usuario|Senha) em Base64
-            /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         ValidateIssuer = true,
@@ -63,7 +70,7 @@ namespace Sispar.Api
                         ValidAudience = "sispar/client",
 
                         IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(_config["SecurityKey"])
+                            Encoding.UTF8.GetBytes(Configuration["SecurityKey"])
                         ),
 
                         ClockSkew = System.TimeSpan.Zero
@@ -71,14 +78,16 @@ namespace Sispar.Api
 
                     options.Events = new JwtBearerEvents()
                     {
-                        OnTokenValidated = context => {
+                        OnTokenValidated = context =>
+                        {
                             // ctx.Log.Add(new Log(){})
                             // ctx.Savechanges()
                             // Debug.WriteLine("usu�rio autenticado: " + context.HttpContext.User.Claims);
                             return Task.CompletedTask;
                         },
 
-                        OnAuthenticationFailed = context => {
+                        OnAuthenticationFailed = context =>
+                        {
                             // ctx.Log.Add(new Log(){})
                             // ctx.Savechanges()
                             // Debug.WriteLine("usu�rio n�o autenticado: " + context.HttpContext.User.Claims);
@@ -86,7 +95,7 @@ namespace Sispar.Api
                         }
                     };
                 });
-                */
+
 
             services.AddSwaggerGen(c =>
             {
@@ -103,37 +112,19 @@ namespace Sispar.Api
                             Url = new Uri("http://factorysolutionit.com.br")
                         }
                     });
+                var security = new Dictionary<string, IEnumerable<string>>
+                {
+                    { "Bearer", new string[] { }}
+                };
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Description = "Entre com o token<br>(NÃO ESQUEÇA DO <strong>bearer</strong> na frente)",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
             });
-
-            // Add Swagger
-            // services.AddSwaggerGen(s => {
-            //     s.SwaggerDoc("v1", new OpenApiInfo
-            //     {
-            //         Title = "Sispar - Doc",
-            //         Version = "v1",
-            //         Contact = new  OpenApiContact
-            //         {
-            //             Email = "factorysolutionit@outlook.com",
-            //             Name = "Factory Solution IT",
-            //             Url = new Uri("http://factorysolutionit.com.br")
-            //         }
-            //     });
-
-            //     /*var security = new Dictionary<string, IEnumerable<string>>
-            //     {
-            //         { "Bearer", new string[] { }}
-            //     };*/
-
-            //     /*s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-            //     {
-            //         Description = "Entre com o token<br>(N�O ESQUE�A DO <strong>bearer</strong> na frente)",
-            //         Name = "Authorization",
-            //          In =  "header",
-            //         Type = "apiKey"
-            //     });*/
-
-            //     //s.AddSecurityRequirement(security);
-            // });
 
             DependencyResolver.Resolve(services);
             //services.AddMediatR(Assembly.GetExecutingAssembly());
