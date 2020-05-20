@@ -20,8 +20,7 @@ namespace Sispar.Infra.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(_config.GetConnectionString("SisparDbConn"));
-            optionsBuilder.UseSqlServer("Server=sql5059.site4now.net;Database=DB_A5E01E_sisparhomolog;User Id=DB_A5E01E_sisparhomolog_admin;Password=metal001;");
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("MyConnection"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
