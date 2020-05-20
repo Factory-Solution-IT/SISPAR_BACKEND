@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sispar.Api.Commands.Requests;
 using Sispar.Api.Queries.Handlers;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Controllers
 {
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TithersController : Controller
