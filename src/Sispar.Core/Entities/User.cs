@@ -18,5 +18,10 @@ namespace Sispar.Domain.Entities
 
             this.Password = password.Encrypt();
         }
+
+        public void EncriptPassword()
+        {
+            Password = Password.Encrypt();
+        }
     }
 }

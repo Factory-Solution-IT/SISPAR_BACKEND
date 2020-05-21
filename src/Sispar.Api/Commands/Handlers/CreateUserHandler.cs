@@ -28,6 +28,8 @@ namespace Sispar.Api.Commands.Handlers
         public async Task<CreateUserResponse> Handle(CreateUserRequest request, CancellationToken cancellationToken)
         {
             var user = _mapper.Map<User>(request);
+            user.EncriptPassword();
+
             await _userRepository.AddAsync(user);
 
             var result = _mapper.Map<CreateUserResponse>(user);
