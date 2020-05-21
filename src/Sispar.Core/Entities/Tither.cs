@@ -18,6 +18,6 @@ namespace Sispar.Domain.Entities
         public  DateTime? DateBirthSpouse { get; set; }
         public Boolean Active { get; set; } = true;
 
-        public virtual ICollection<Tithe> Tithes { get; set; } = new List<Tithe>();
+        public virtual ICollection<Tithe> Tithes { get; set; }// = new List<Tithe>();
     }
 }
