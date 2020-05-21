@@ -12,6 +12,6 @@ namespace Sispar.Domain.Entities
         public DateTime DateContribution { get; set; }
         public Guid TitherId { get; set; }
 
-        public virtual Tither Tither { get; set; } = new Tither();
+        public virtual Tither Tither { get; set; }
     }
 }
