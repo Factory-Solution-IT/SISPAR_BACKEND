@@ -19,7 +19,7 @@ namespace Sispar.Api.Profiles
             CreateMap<User, UserResponse>();
             CreateMap<User, CreateUserResponse>();
             CreateMap<CreateUserRequest, User>();
-            // CreateMap<UpdateTitheRequest, Tithe>();
+            CreateMap<User, LoginResponse>();
         }
     }
 }
