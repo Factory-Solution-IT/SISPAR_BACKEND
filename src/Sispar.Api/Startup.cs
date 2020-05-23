@@ -62,9 +62,9 @@ namespace Sispar.Api
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
+                        // ValidateAudience = true,
+                        //ValidateLifetime = true,
+                        // ValidateIssuerSigningKey = true,
 
                         ValidIssuer = "sispar",
                         ValidAudience = "sispar/client",
@@ -117,13 +117,37 @@ namespace Sispar.Api
                     { "Bearer", new string[] { }}
                 };
 
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                //{
+                //    Reference = new OpenApiReference
+                //    {
+                //        Type = ReferenceType.SecurityScheme,
+                //        Id = "Bearer"
+                //    },
+                //    Description = "Entre com o token<br>(NÃO ESQUEÇA DO <strong>bearer</strong> na frente)",
+                //    Name = "Authorization",
+                //    In = ParameterLocation.Header,
+                //    Type = SecuritySchemeType.ApiKey
+                //});
+                var securitySchema = new OpenApiSecurityScheme
                 {
                     Description = "Entre com o token<br>(NÃO ESQUEÇA DO <strong>bearer</strong> na frente)",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                });
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                };
+                c.AddSecurityDefinition("Bearer", securitySchema);
+
+                var securityRequirement = new OpenApiSecurityRequirement();
+                securityRequirement.Add(securitySchema, new[] { "Bearer" });
+                c.AddSecurityRequirement(securityRequirement);
+                // c.AddSecurityRequirement(new OpenApiSecurityRequirement() { } security);
             });
 
             DependencyResolver.Resolve(services);
@@ -144,6 +168,7 @@ namespace Sispar.Api
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseSwagger();
             app.UseSwaggerUI(s =>
