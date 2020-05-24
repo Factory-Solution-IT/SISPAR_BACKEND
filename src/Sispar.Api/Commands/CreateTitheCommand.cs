@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands.Requests
+namespace Sispar.Api.Commands
 {
-    public class CreateTitheRequest : IRequest<CreateTitheResponse>
+    public class CreateTitheCommand : IRequest<CreateTitheResponse>
     {
         public decimal ValueContribution { get; set; }
         public DateTime DateContribution { get; set; }

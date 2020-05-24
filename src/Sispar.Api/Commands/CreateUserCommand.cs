@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands.Requests
+namespace Sispar.Api.Commands
 {
-    public class CreateUserRequest : IRequest<CreateUserResponse>
+    public class CreateUserCommand : IRequest<CreateUserResponse>
     {
         public string Username { get; set; }
         public string Password { get; set; }

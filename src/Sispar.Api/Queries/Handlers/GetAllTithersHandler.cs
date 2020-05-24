@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using Sispar.Api.Queries.Requests;
 using Sispar.Api.Queries.Responses;
-using Sispar.Core.Notification;
 using Sispar.Domain.Contracts.Repositories;
 using System.Collections.Generic;
 using System.Threading;

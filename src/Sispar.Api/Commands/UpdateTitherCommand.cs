@@ -2,10 +2,11 @@
 using Sispar.Api.Commands.Responses;
 using System;
 
-namespace Sispar.Api.Commands.Requests
+namespace Sispar.Api.Commands
 {
-    public class CreateTitherRequest : IRequest<CreateTitherResponse>
+    public class UpdateTitherCommand : IRequest<NoContentResponse>
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public int MatiralStatus { get; set; }

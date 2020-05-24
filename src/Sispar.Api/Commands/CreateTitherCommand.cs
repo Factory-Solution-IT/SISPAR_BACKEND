@@ -1,17 +1,11 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
 using Sispar.Api.Commands.Responses;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands.Requests
+namespace Sispar.Api.Commands
 {
-    public class UpdateTitherRequest : IRequest<NoContentResponse>
+    public class CreateTitherCommand : IRequest<CreateTitherResponse>
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public int MatiralStatus { get; set; }

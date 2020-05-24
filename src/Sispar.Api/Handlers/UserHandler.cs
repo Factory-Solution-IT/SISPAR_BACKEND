@@ -1,28 +1,25 @@
 ﻿using AutoMapper;
 using MediatR;
-using Sispar.Api.Commands.Requests;
+using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
-using Sispar.Api.Queries.Responses;
 using Sispar.Core.Notification;
 using Sispar.Domain.Contracts.Repositories;
 using Sispar.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands.Handlers
+namespace Sispar.Api.Handlers
 {
-    public class CreateUserHandler : IRequestHandler<CreateUserRequest, CreateUserResponse>
+    public class UserHandler :
+        IRequestHandler<CreateUserCommand, CreateUserResponse>,
+        IRequestHandler<DeleteUserCommand, NoContentResponse>
     {
         private readonly IMapper _mapper;
         private readonly NotificationContext _notificationContext;
         private readonly IUserRepository _userRepository;
 
-        public CreateUserHandler(IMapper mapper, 
-            NotificationContext notificationContext, 
+        public UserHandler(IMapper mapper,
+            NotificationContext notificationContext,
             IUserRepository userRepository)
         {
             _mapper = mapper;
@@ -30,7 +27,7 @@ namespace Sispar.Api.Commands.Handlers
             _userRepository = userRepository;
         }
 
-        public async Task<CreateUserResponse> Handle(CreateUserRequest request, CancellationToken cancellationToken)
+        public async Task<CreateUserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             if (!request.Password.Equals(request.ConfirmPassword))
             {
@@ -45,6 +42,14 @@ namespace Sispar.Api.Commands.Handlers
 
             var result = _mapper.Map<CreateUserResponse>(user);
             return await Task.FromResult(result);
+        }
+
+        public async Task<NoContentResponse> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetByIdAsync(request.Id);
+            _userRepository.Delete(user);
+
+            return await Task.FromResult(new NoContentResponse());
         }
     }
 }

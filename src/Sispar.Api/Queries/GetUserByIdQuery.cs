@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Queries.Requests
+namespace Sispar.Api.Queries
 {
-    public class GetTitheByIdQuery : IRequest<TitheResponse>
+    public class GetUserByIdQuery : IRequest<UserResponse>
     {
         public Guid Id { get; set; }
 
-        public GetTitheByIdQuery(Guid id)
+        public GetUserByIdQuery(Guid id)
         {
             Id = id;
         }

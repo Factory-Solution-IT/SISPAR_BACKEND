@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
-using Sispar.Api.Queries.Requests;
 using Sispar.Api.Queries.Responses;
 using Sispar.Domain.Contracts.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,6 +18,7 @@ namespace Sispar.Api.Queries.Handlers
             _mapper = mapper;
             _titheRepository = titheRepository;
         }
+
         public async Task<IEnumerable<TitheResponse>> Handle(GetAllTithesQuery request, CancellationToken cancellationToken)
         {
             var tithes = await _titheRepository.GetAllAsync();
@@ -30,6 +27,5 @@ namespace Sispar.Api.Queries.Handlers
 
             return await Task.FromResult(result);
         }
-
     }
 }

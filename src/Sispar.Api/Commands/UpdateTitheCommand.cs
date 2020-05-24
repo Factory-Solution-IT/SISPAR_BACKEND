@@ -1,14 +1,10 @@
 ﻿using MediatR;
 using Sispar.Api.Commands.Responses;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands.Requests
+namespace Sispar.Api.Commands
 {
-    public class UpdateTitheRequest : IRequest<NoContentResponse>
+    public class UpdateTitheCommand : IRequest<NoContentResponse>
     {
         public Guid Id { get; set; }
         public decimal ValueContribution { get; set; }
