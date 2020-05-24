@@ -5,6 +5,7 @@ using Sispar.Api.Commands.Responses;
 using Sispar.Core.Notification;
 using Sispar.Domain.Contracts.Repositories;
 using Sispar.Domain.Entities;
+using Sispar.Domain.Entities.Validators;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -37,6 +38,12 @@ namespace Sispar.Api.Handlers
 
             var user = _mapper.Map<User>(request);
             user.EncriptPassword();
+
+            if (!user.Validate(user, new UserValidator()))
+            {
+                _notificationContext.AddNotifications(user.ValidationResult);
+                return await Task.FromResult(new CreateUserResponse());
+            }
 
             await _userRepository.AddAsync(user);
 
