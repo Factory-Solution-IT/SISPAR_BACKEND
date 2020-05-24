@@ -23,6 +23,8 @@ namespace Sispar.Infra.EF.Maps
             builder.Property(c => c.Id);
             builder.Property(c => c.Username).IsRequired().HasMaxLength(50);
             builder.Property(c => c.Password).IsRequired().HasMaxLength(50);
+            builder.Property(c => c.FirstName).IsRequired().HasMaxLength(50);
+            builder.Property(c => c.LastName).IsRequired().HasMaxLength(50);
             builder.Property(c => c.Active).HasColumnType("smallint");
             builder.Property(c => c.RegisterDate);
 
