@@ -51,11 +51,10 @@ namespace Sispar.Api.Controllers
             return CreatedAtRoute(nameof(GetTitheById), new { result.Id }, result);
         }
 
-        // PUT: api/tithes/{id}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTithe(Guid id, UpdateTitheCommand updateTitheRequest)
+        // PUT: api/tithes
+        [HttpPut]
+        public async Task<IActionResult> UpdateTithe(UpdateTitheCommand updateTitheRequest)
         {
-            updateTitheRequest.Id = id;
             await _mediator.Send(updateTitheRequest);
             return NoContent();
         }
