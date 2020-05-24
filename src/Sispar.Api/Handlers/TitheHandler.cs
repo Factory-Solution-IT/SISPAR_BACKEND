@@ -31,11 +31,12 @@ namespace Sispar.Api.Handlers
         public async Task<CreateTitheResponse> Handle(CreateTitheCommand request, CancellationToken cancellationToken)
         {
             var tithe = _mapper.Map<Tithe>(request);
-            if (!tithe.Validate(tithe, new TitheValidator()))
-                _notificationContext.AddNotifications(tithe.ValidationResult);
 
-            if (_notificationContext.HasNotifications)
+            if (!tithe.Validate(tithe, new TitheValidator()))
+            { 
+                _notificationContext.AddNotifications(tithe.ValidationResult);
                 return await Task.FromResult(new CreateTitheResponse());
+            }
 
             await _titheRepository.AddAsync(tithe);
 
@@ -49,6 +50,12 @@ namespace Sispar.Api.Handlers
             var titheFromRepo = await _titheRepository.GetByIdAsync(request.Id);
 
             _mapper.Map(request, titheFromRepo);
+
+            if (!titheFromRepo.Validate(titheFromRepo, new TitheValidator()))
+            { 
+                _notificationContext.AddNotifications(titheFromRepo.ValidationResult);
+                return await Task.FromResult(new NoContentResponse());
+            }
 
             _titheRepository.Edit(titheFromRepo);
 
