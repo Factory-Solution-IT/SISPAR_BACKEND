@@ -15,8 +15,8 @@ namespace Sispar.Infra.EF
         public static void Seed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new User() { Id = Guid.NewGuid(), Username = "milton", Password = "123456".Encrypt() },
-                new User() { Id = Guid.NewGuid(), Username = "felipe", Password = "123456".Encrypt() }
+                new User() { Id = Guid.NewGuid(), Username = "milton", Password = "123456".Encrypt(), FirstName = "Felipe", LastName = "Santos" },
+                new User() { Id = Guid.NewGuid(), Username = "felipe", Password = "123456".Encrypt(), FirstName = "Milton", LastName = "Honji" }
                 );
 
             modelBuilder.Entity<Tither>().HasData(
