@@ -14,7 +14,7 @@ namespace Sispar.Api.Profiles
             CreateMap<Tithe, TitheResponse>();
             CreateMap<Tithe, CreateTitheResponse>();
             CreateMap<CreateTitheCommand, Tithe>();
-            // CreateMap<UpdateTitheRequest, Tithe>();
+            CreateMap<UpdateTitheCommand, Tithe>();
         }
     }
 }

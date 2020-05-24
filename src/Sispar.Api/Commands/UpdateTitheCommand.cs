@@ -9,6 +9,5 @@ namespace Sispar.Api.Commands
         public Guid Id { get; set; }
         public decimal ValueContribution { get; set; }
         public DateTime DateContribution { get; set; }
-        public Guid TitherId { get; set; }
     }
 }

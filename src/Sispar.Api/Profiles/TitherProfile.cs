@@ -6,9 +6,9 @@ using Sispar.Domain.Entities;
 
 namespace Sispar.Api.Profiles
 {
-    public class TithersProfile : Profile
+    public class TitherProfile : Profile
     {
-        public TithersProfile()
+        public TitherProfile()
         {
             //Source -> Target
             CreateMap<Tither, TitherResponse>();
