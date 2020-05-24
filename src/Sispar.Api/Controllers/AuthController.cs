@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Sispar.Api.Commands.Requests;
+using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -26,9 +26,9 @@ namespace Sispar.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RequestToken(LoginRequest loginRequest)
+        public async Task<IActionResult> RequestToken(LoginCommand loginCommand)
         {
-            var loginResponse = await _mediator.Send(loginRequest);
+            var loginResponse = await _mediator.Send(loginCommand);
 
             //return GenerateToken(user);
             return GenerateToken(loginResponse);

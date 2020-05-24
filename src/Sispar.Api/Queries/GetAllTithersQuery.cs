@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Queries.Requests
+namespace Sispar.Api.Queries
 {
     public class GetAllTithersQuery : IRequest<IEnumerable<TitherResponse>>
     {

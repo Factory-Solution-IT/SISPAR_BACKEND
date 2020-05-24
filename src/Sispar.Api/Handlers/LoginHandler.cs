@@ -2,7 +2,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Sispar.Api.Commands.Requests;
 using Sispar.Api.Commands.Responses;
 using Sispar.Core.Notification;
 using Sispar.Domain.Contracts.Repositories;
@@ -10,7 +9,8 @@ using Sispar.Common.Helpers;
 
 namespace Sispar.Api.Commands.Handlers
 {
-    public class LoginHandler : IRequestHandler<LoginRequest, LoginResponse>
+    public class LoginHandler : 
+        IRequestHandler<LoginCommand, LoginResponse>
     {
         private readonly IMapper _mapper;
         private readonly NotificationContext _notificationContext;
@@ -24,7 +24,7 @@ namespace Sispar.Api.Commands.Handlers
             _userRepository = userRepository;
         }
 
-        public async Task<LoginResponse> Handle(LoginRequest request, CancellationToken cancellationToken)
+        public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             if (request.Password != request.ConfirmPassword)
             {
