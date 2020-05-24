@@ -1,5 +1,6 @@
 using FluentValidation;
 using Sispar.Domain.Entities;
+using System;
 
 namespace Sispar.Core.Entities.Validators
 {
@@ -9,6 +10,10 @@ namespace Sispar.Core.Entities.Validators
         {
             RuleFor(a => a.ValueContribution)
                 .GreaterThan(0);
+
+            RuleFor(a => a.DateContribution)
+                .NotEmpty()
+                .LessThanOrEqualTo(DateTime.UtcNow);
 
             RuleFor(a => a.TitherId)
                 .NotEmpty();
