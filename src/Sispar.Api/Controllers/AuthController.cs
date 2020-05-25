@@ -30,37 +30,32 @@ namespace Sispar.Api.Controllers
         {
             var loginResponse = await _mediator.Send(loginCommand);
 
-            //return GenerateToken(user);
+            if (!loginResponse.IsValid)
+                return BadRequest();
+
             return GenerateToken(loginResponse);
         }
 
         private OkObjectResult GenerateToken(LoginResponse loginResponse)
         {
-            var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.NameId, loginResponse.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName, loginResponse.Username)
-                //new Claim(ClaimTypes.Role, "Admin"),
-                //new Claim(ClaimTypes.Role, "TI"),
-                //new Claim("permissions","addUser")
+            // authentication successful so generate jwt token
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_config["SecurityKey"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim("NameId", loginResponse.Id.ToString()),
+                    new Claim("Username", loginResponse.Username),
+                    new Claim("Name", loginResponse.FirstName)
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
+            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.WriteToken(securityToken);
 
-            var key =
-                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecurityKey"]));
-
-            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: "sispar",
-                audience: "sispar/client",
-                claims: claims,
-                expires: DateTime.UtcNow.AddMonths(1),
-                notBefore: DateTime.UtcNow,
-                signingCredentials: credentials
-            );
-
-            return Ok(
-                    new { token = new JwtSecurityTokenHandler().WriteToken(token) }
-                );
+            return Ok(new { token });
         }
 
         protected override void Dispose(bool disposing)

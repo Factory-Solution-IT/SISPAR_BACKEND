@@ -1,5 +1,6 @@
 using FluentValidation;
 using Sispar.Domain.Entities;
+using System;
 
 namespace Sispar.Core.Entities.Validators
 {
@@ -15,6 +16,10 @@ namespace Sispar.Core.Entities.Validators
 
             RuleFor(a => a.CPF)
                 .NotEmpty();
+
+            RuleFor(a => a.BirthDate)
+                .NotEmpty()
+                .LessThanOrEqualTo(DateTime.UtcNow);
             // .Matches(@"/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/")
             // .WithMessage("CPF inválido");
         }

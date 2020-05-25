@@ -13,6 +13,7 @@ namespace Sispar.Api.Handlers
 {
     public class UserHandler :
         IRequestHandler<CreateUserCommand, CreateUserResponse>,
+        IRequestHandler<UpdateUserCommand, NoContentResponse>,
         IRequestHandler<DeleteUserCommand, NoContentResponse>
     {
         private readonly IMapper _mapper;
@@ -51,6 +52,23 @@ namespace Sispar.Api.Handlers
             return await Task.FromResult(result);
         }
 
+        public async Task<NoContentResponse> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        {
+            var userFromRepo = await _userRepository.GetByIdAsync(request.Id);
+
+            _mapper.Map(request, userFromRepo);
+
+            if (!userFromRepo.Validate(userFromRepo, new UserValidator()))
+            {
+                _notificationContext.AddNotifications(userFromRepo.ValidationResult);
+                return await Task.FromResult(new NoContentResponse());
+            }
+
+            _userRepository.Edit(userFromRepo);
+
+            return await Task.FromResult(new NoContentResponse());
+        }
+
         public async Task<NoContentResponse> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByIdAsync(request.Id);
@@ -58,5 +76,6 @@ namespace Sispar.Api.Handlers
 
             return await Task.FromResult(new NoContentResponse());
         }
+
     }
 }

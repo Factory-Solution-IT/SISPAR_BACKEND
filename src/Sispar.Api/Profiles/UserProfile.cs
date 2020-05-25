@@ -14,6 +14,7 @@ namespace Sispar.Api.Profiles
             CreateMap<User, UserResponse>();
             CreateMap<User, CreateUserResponse>();
             CreateMap<CreateUserCommand, User>();
+            CreateMap<UpdateUserCommand, User>();
             CreateMap<User, LoginResponse>();
         }
     }

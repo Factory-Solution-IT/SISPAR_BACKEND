@@ -46,6 +46,7 @@ namespace Sispar.Api.Commands.Handlers
             }
             
             var result = _mapper.Map<LoginResponse>(user);
+            result.IsValid = true;
             return await Task.FromResult(result);
         }
     }

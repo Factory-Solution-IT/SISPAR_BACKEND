@@ -46,11 +46,20 @@ namespace Sispar.Api.Handlers
         public async Task<NoContentResponse> Handle(UpdateTitherCommand request, CancellationToken cancellationToken)
         {
             var titherFromRepo = await _titherRepository.GetByIdAsync(request.Id);
+
             _mapper.Map(request, titherFromRepo);
+
+            if (!titherFromRepo.Validate(titherFromRepo, new TitherValidator()))
+            {
+                _notificationContext.AddNotifications(titherFromRepo.ValidationResult);
+                return await Task.FromResult(new NoContentResponse());
+            }
+
             _titherRepository.Edit(titherFromRepo);
 
             return await Task.FromResult(new NoContentResponse());
         }
+
         public async Task<NoContentResponse> Handle(DeleteTitherCommand request, CancellationToken cancellationToken)
         {
             var tither = await _titherRepository.GetByIdAsync(request.Id);
