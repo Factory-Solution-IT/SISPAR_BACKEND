@@ -32,12 +32,12 @@ namespace Sispar.Api
         {
             services.AddControllers(options => options.Filters.Add<NotificationFilter>());
 
-            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-            {
-                builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-            }));
+            //services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            //{
+            //    builder.AllowAnyOrigin()
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader();
+            //}));
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>
@@ -56,46 +56,25 @@ namespace Sispar.Api
             // });
 
             // Bearer ou Basic (Usuario|Senha) em Base64
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
+            // var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(Configuration["SecurityKey"]);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters()
-                    {
-                        ValidateIssuer = true,
-                        // ValidateAudience = true,
-                        //ValidateLifetime = true,
-                        // ValidateIssuerSigningKey = true,
-
-                        ValidIssuer = "sispar",
-                        ValidAudience = "sispar/client",
-
-                        IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(Configuration["SecurityKey"])
-                        ),
-
-                        ClockSkew = System.TimeSpan.Zero
-                    };
-
-                    options.Events = new JwtBearerEvents()
-                    {
-                        OnTokenValidated = context =>
-                        {
-                            // ctx.Log.Add(new Log(){})
-                            // ctx.Savechanges()
-                            // Debug.WriteLine("usu�rio autenticado: " + context.HttpContext.User.Claims);
-                            return Task.CompletedTask;
-                        },
-
-                        OnAuthenticationFailed = context =>
-                        {
-                            // ctx.Log.Add(new Log(){})
-                            // ctx.Savechanges()
-                            // Debug.WriteLine("usu�rio n�o autenticado: " + context.HttpContext.User.Claims);
-                            return Task.CompletedTask;
-                        }
-                    };
-                });
-
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -117,18 +96,6 @@ namespace Sispar.Api
                     { "Bearer", new string[] { }}
                 };
 
-                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-                //{
-                //    Reference = new OpenApiReference
-                //    {
-                //        Type = ReferenceType.SecurityScheme,
-                //        Id = "Bearer"
-                //    },
-                //    Description = "Entre com o token<br>(NÃO ESQUEÇA DO <strong>bearer</strong> na frente)",
-                //    Name = "Authorization",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey
-                //});
                 var securitySchema = new OpenApiSecurityScheme
                 {
                     Description = "Entre com o token<br>(NÃO ESQUEÇA DO <strong>bearer</strong> na frente)",
@@ -147,11 +114,9 @@ namespace Sispar.Api
                 var securityRequirement = new OpenApiSecurityRequirement();
                 securityRequirement.Add(securitySchema, new[] { "Bearer" });
                 c.AddSecurityRequirement(securityRequirement);
-                // c.AddSecurityRequirement(new OpenApiSecurityRequirement() { } security);
             });
 
             DependencyResolver.Resolve(services);
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMediatR(typeof(Startup));
         }
 
@@ -163,12 +128,18 @@ namespace Sispar.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors("MyPolicy");
+            // app.UseCors("MyPolicy");
+
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseSwagger();
             app.UseSwaggerUI(s =>

@@ -44,6 +44,14 @@ namespace Sispar.Api.Controllers
             return CreatedAtRoute(nameof(GetUserById), new { result.Id }, result);
         }
 
+        // PUT api/users
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser(UpdateUserCommand updateUserCommand)
+        {
+            await _mediator.Send(updateUserCommand);
+            return NoContent();
+        }
+
         //[HttpPost]
         //[Route("ChangePassword")]
         //public IActionResult ChangePassword([FromBody] Models.Tither.ChangePasswordVM model)

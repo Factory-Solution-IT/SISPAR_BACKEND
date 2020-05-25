@@ -50,10 +50,9 @@ namespace Sispar.Api.Controllers
         }
 
         //PUT api/tithers
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTither(Guid id, UpdateTitherCommand updateTitherRequest)
+        [HttpPut()]
+        public async Task<IActionResult> UpdateTither(UpdateTitherCommand updateTitherRequest)
         {
-            updateTitherRequest.Id = id;
             await _mediator.Send(updateTitherRequest);
             return NoContent();
         }
