@@ -26,12 +26,6 @@ namespace Sispar.Api.Commands.Handlers
 
         public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            if (request.Password != request.ConfirmPassword)
-            {
-                _notificationContext.AddNotification("Not Found", "Senha e Confirma senha não conferem");
-                return await Task.FromResult(new LoginResponse());
-            }
-
             var user = await _userRepository.GetByUserNameAsync(request.Username);
             if (user == null)
             {
