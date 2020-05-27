@@ -1,14 +1,16 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sispar.Api.Commands.Requests;
+using Sispar.Api.Commands;
+using Sispar.Api.Queries;
 using Sispar.Api.Queries.Handlers;
-using Sispar.Api.Queries.Requests;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Sispar.Api.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TithersController : Controller
@@ -41,26 +43,25 @@ namespace Sispar.Api.Controllers
 
         //POST api/tithers
         [HttpPost]
-        public async Task<IActionResult> CreateTither(CreateTitherRequest createTitherRequest)
+        public async Task<IActionResult> CreateTither(CreateTitherCommand createTitherCommand)
         {
-            var result = await _mediator.Send(createTitherRequest);
+            var result = await _mediator.Send(createTitherCommand);
             return CreatedAtRoute(nameof(GetTitherById), new { result.Id }, result);
         }
 
         //PUT api/tithers
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTither(Guid id, UpdateTitherRequest updateTitherRequest)
+        [HttpPut()]
+        public async Task<IActionResult> UpdateTither(UpdateTitherCommand updateTitherRequest)
         {
-            updateTitherRequest.Id = id;
             await _mediator.Send(updateTitherRequest);
-            return NoContent();        
+            return NoContent();
         }
 
         // DELETE api/tithers/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTither(Guid id)
         {
-            var request = new DeleteTitherRequest(id);
+            var request = new DeleteTitherCommand(id);
             await _mediator.Send(request);
 
             return NoContent();

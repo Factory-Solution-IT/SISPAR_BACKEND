@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
-using Sispar.Api.Commands.Requests;
+using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
 using Sispar.Api.Queries.Responses;
 using Sispar.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sispar.Api.Profiles
 {
@@ -18,8 +13,9 @@ namespace Sispar.Api.Profiles
             //Source -> Target
             CreateMap<User, UserResponse>();
             CreateMap<User, CreateUserResponse>();
-            CreateMap<CreateUserRequest, User>();
-            // CreateMap<UpdateTitheRequest, Tithe>();
+            CreateMap<CreateUserCommand, User>();
+            CreateMap<UpdateUserCommand, User>();
+            CreateMap<User, LoginResponse>();
         }
     }
 }

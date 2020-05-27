@@ -8,6 +8,8 @@ namespace Sispar.Domain.Entities
     {
         public string Username { get; set; }
         public string Password { get; set ; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public Boolean Active { get; set; } = true;
 
         public void SetPassword(string password, string confirmPassword)
@@ -17,6 +19,11 @@ namespace Sispar.Domain.Entities
             AssertionConcern.AssertArgumentEquals(password, confirmPassword, "Senha e confirma senha são diferentes");
 
             this.Password = password.Encrypt();
+        }
+
+        public void EncriptPassword()
+        {
+            Password = Password.Encrypt();
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
-using Sispar.Api.Commands.Requests;
-using Sispar.Api.Queries.Requests;
+using Sispar.Api.Commands;
+using Sispar.Api.Queries;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,10 +38,18 @@ namespace Sispar.Api.Controllers
 
         // POST api/users
         [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserRequest createUserRequest)
+        public async Task<IActionResult> CreateUser(CreateUserCommand createUserCommand)
         {
-            var result = await _mediator.Send(createUserRequest);
+            var result = await _mediator.Send(createUserCommand);
             return CreatedAtRoute(nameof(GetUserById), new { result.Id }, result);
+        }
+
+        // PUT api/users
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser(UpdateUserCommand updateUserCommand)
+        {
+            await _mediator.Send(updateUserCommand);
+            return NoContent();
         }
 
         //[HttpPost]
@@ -64,7 +71,7 @@ namespace Sispar.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
-            await _mediator.Send(new DeleteUserRequest(id));
+            await _mediator.Send(new DeleteUserCommand(id));
             return NoContent();
         }
     }

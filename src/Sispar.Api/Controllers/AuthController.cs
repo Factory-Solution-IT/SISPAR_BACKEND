@@ -1,67 +1,61 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Sispar.Domain.Entities;
+using Microsoft.IdentityModel.Tokens;
+using Sispar.Api.Commands;
+using Sispar.Api.Commands.Responses;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Sispar.Api.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
     public class AuthController : Controller
     {
-        //private readonly IUserService _userService;
+        private readonly IMediator _mediator;
         private readonly IConfiguration _config;
 
-        public AuthController(/*IUserService userService,*/ IConfiguration config)
+        public AuthController(IConfiguration config, IMediator mediator)
         {
-            //_userService = userService;
+            _mediator = mediator;
             _config = config;
         }
 
         [HttpPost]
-        public IActionResult RequestToken([FromBody] Models.Auth.LoginVM model)
+        public async Task<IActionResult> RequestToken(LoginCommand loginCommand)
         {
-            try
-            {
-                //var user =  await _userService.LoginAsync(model.Username, model.Password);
+            var loginResponse = await _mediator.Send(loginCommand);
 
-                //return GenerateToken(user);
-                return GenerateToken(new User());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            if (!loginResponse.IsValid)
+                return BadRequest();
+
+            return GenerateToken(loginResponse);
         }
 
-        private OkObjectResult GenerateToken(User user)
+        private OkObjectResult GenerateToken(LoginResponse loginResponse)
         {
-            var claims = new[] {
-                // new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
-                // new Claim(JwtRegisteredClaimNames.GivenName, user.Username),
-                new Claim(ClaimTypes.Role, "Admin"),
-                new Claim(ClaimTypes.Role, "TI"),
-                //new Claim("permissions","addUser")
+            // authentication successful so generate jwt token
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_config["SecurityKey"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim("NameId", loginResponse.Id.ToString()),
+                    new Claim("Username", loginResponse.Username),
+                    new Claim("Name", loginResponse.FirstName)
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
+            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
+            var token = tokenHandler.WriteToken(securityToken);
 
-            // var key =
-            //     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["SecurityKey"]));
-
-            // var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            // var token = new JwtSecurityToken(
-            //     issuer: "sispar",
-            //     audience: "sispar/client",
-            //     claims: claims,
-            //     expires: DateTime.UtcNow.AddMonths(1),
-            //     notBefore: DateTime.UtcNow,
-            //     signingCredentials: credentials
-            // );
-
-            return Ok(new { });
-            //                new { token = new JwtSecurityTokenHandler().WriteToken(token) }
-            //               );
+            return Ok(new { token });
         }
 
         protected override void Dispose(bool disposing)

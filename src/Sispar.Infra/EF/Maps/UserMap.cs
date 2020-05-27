@@ -15,28 +15,18 @@ namespace Sispar.Infra.EF.Maps
         {
     
             // table
-            builder.ToTable("USER_");
 
             // pk
             builder.HasKey(pk => pk.Id);
 
             // columns
-            builder.Property(c => c.Id)
-                .HasColumnName("ID_USER");
-            builder.Property(c => c.Username)
-                .IsRequired()
-                .HasColumnName("USERNAME")
-                .HasColumnType("varchar(50)");
-            builder.Property(c => c.Password)
-                .IsRequired()
-                .HasColumnName("PASSWORD")
-                .HasColumnType("varchar(50)");
-            builder.Property(c => c.Active)
-                .HasColumnName("ACTIVE")
-                .HasColumnType("smallint");
-            builder.Property(c => c.RegisterDate)
-                .HasColumnType("datetime")
-                .HasColumnName("REGISTER_DATE");
+            builder.Property(c => c.Id);
+            builder.Property(c => c.Username).IsRequired().HasMaxLength(50);
+            builder.Property(c => c.Password).IsRequired().HasMaxLength(50);
+            builder.Property(c => c.FirstName).IsRequired().HasMaxLength(50);
+            builder.Property(c => c.LastName).IsRequired().HasMaxLength(50);
+            builder.Property(c => c.Active).HasColumnType("smallint");
+            builder.Property(c => c.RegisterDate);
 
             // relationships
         }
