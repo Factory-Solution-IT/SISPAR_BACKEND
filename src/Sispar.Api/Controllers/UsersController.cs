@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sispar.Api.Commands;
 using Sispar.Api.Queries;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Api.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : Controller
