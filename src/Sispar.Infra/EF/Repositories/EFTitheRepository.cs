@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Sispar.Domain.TitheModule;
+using Sispar.Domain.TitheModule.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Sispar.Domain.Contracts.Repositories;
-using Sispar.Domain.Entities;
 
 namespace Sispar.Infra.EF.Repositories
 {

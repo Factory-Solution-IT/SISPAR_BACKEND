@@ -1,13 +1,14 @@
 ﻿using Sispar.Common.Helpers;
 using Sispar.Common.Validation;
+using Sispar.Domain.BaseModule;
 using System;
 
-namespace Sispar.Domain.Entities
+namespace Sispar.Domain.UserModule
 {
     public class User : Entity
     {
         public string Username { get; set; }
-        public string Password { get; set ; }
+        public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Boolean Active { get; set; } = true;

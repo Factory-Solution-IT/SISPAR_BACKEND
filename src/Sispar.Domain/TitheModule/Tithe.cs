@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sispar.Domain.BaseModule;
+using Sispar.Domain.TitherModule;
+using System;
 
-namespace Sispar.Domain.Entities
+namespace Sispar.Domain.TitheModule
 {
     public class Tithe : Entity
     {

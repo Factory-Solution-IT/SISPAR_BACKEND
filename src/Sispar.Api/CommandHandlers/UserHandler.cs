@@ -1,15 +1,16 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
 using Sispar.Core.Notification;
-using Sispar.Domain.Contracts.Repositories;
-using Sispar.Domain.Entities;
-using Sispar.Domain.Entities.Validators;
+using Sispar.Domain.UserModule;
+using Sispar.Domain.UserModule.Abstractions;
+using Sispar.Domain.UserModule.Validators;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Handlers
+namespace Sispar.Api.CommandHandlers
 {
     public class UserHandler :
         IRequestHandler<CreateUserCommand, CreateUserResponse>,
@@ -76,6 +77,5 @@ namespace Sispar.Api.Handlers
 
             return await Task.FromResult(new NoContentResponse());
         }
-
     }
 }

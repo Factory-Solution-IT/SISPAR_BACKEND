@@ -16,7 +16,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Sispar.Business\Sispar.Business.csproj" />
     <ProjectReference Include="..\Sispar.Common\Sispar.Common.csproj" />
-    <ProjectReference Include="..\Sispar.Core\Sispar.Domain.csproj" />
+    <ProjectReference Include="..\Sispar.Core\Sispar.Core.csproj" />
+    <ProjectReference Include="..\Sispar.Domain\Sispar.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,13 @@
-using FluentValidation;
-using Sispar.Domain.Entities;
+﻿using FluentValidation;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sispar.Core.Entities.Validators
+namespace Sispar.Domain.TitheModule.Validators
 {
-    public class TitheValidator: AbstractValidator<Tithe>
+    public class TitheValidator : AbstractValidator<Tithe>
     {
         public TitheValidator()
         {
