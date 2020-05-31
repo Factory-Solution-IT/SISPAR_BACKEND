@@ -1,14 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Sispar.Core.Entities;
+using Sispar.Domain.TitheModule;
+using Sispar.Domain.TitherModule;
+using Sispar.Domain.UserModule;
 
 namespace Sispar.Infra.EF
 {
     public class SisparDataContext : DbContext
     {
-//        private readonly IConfiguration _config;
+        //        private readonly IConfiguration _config;
 
-        public SisparDataContext() {}
+        public SisparDataContext()
+        {
+        }
 
         // public SisparDataContext(IConfiguration config)
         // {

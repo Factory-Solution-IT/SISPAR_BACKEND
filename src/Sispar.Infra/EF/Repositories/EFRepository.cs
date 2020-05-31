@@ -1,15 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sispar.Core.Contracts;
-using Sispar.Core.Entities;
+using Sispar.Domain.BaseModule;
+using Sispar.Domain.BaseModule.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sispar.Infra.EF.Repositories
 {
-    public class EFRepository<T> : IRepository<T> where T: Entity
+    public class EFRepository<T> : IRepository<T> where T : Entity
     {
         protected readonly SisparDataContext _context;
 

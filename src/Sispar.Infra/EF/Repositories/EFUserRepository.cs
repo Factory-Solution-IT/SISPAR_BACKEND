@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sispar.Core.Contracts.Repositories;
-using Sispar.Core.Entities;
+using Sispar.Domain.UserModule;
+using Sispar.Domain.UserModule.Abstractions;
 using Sispar.Infra.EF.Repositories;
 using System.Linq;
 using System.Threading.Tasks;

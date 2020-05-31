@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
 using Sispar.Core.Notification;
-using Sispar.Core.Contracts.Repositories;
-using Sispar.Core.Entities;
-using Sispar.Core.Entities.Validators;
+using Sispar.Domain.UserModule;
+using Sispar.Domain.UserModule.Abstractions;
+using Sispar.Domain.UserModule.Validators;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -76,6 +77,5 @@ namespace Sispar.Api.CommandHandlers
 
             return await Task.FromResult(new NoContentResponse());
         }
-
     }
 }

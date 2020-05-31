@@ -1,5 +1,5 @@
-﻿using Sispar.Core.Contracts.Repositories;
-using Sispar.Core.Entities;
+﻿using Sispar.Domain.TitherModule;
+using Sispar.Domain.TitherModule.Abstractions;
 
 namespace Sispar.Infra.EF.Repositories
 {

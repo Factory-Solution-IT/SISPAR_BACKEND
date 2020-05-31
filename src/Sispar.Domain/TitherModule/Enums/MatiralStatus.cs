@@ -1,6 +1,6 @@
-﻿namespace Sispar.Core.Entities.Enums
+﻿namespace Sispar.Domain.TitherModule.Enums
 {
-    public enum MatiralStatus 
+    public enum MatiralStatus
     {
         Solteiro = 1,
         Casado = 2,

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Sispar.Domain.BaseModule.Abstractions;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using Sispar.Core.Entities;
 
-namespace Sispar.Core.Contracts.Repositories
+namespace Sispar.Domain.TitheModule.Abstractions
 {
     public interface ITitheRepository : IRepository<Tithe>
     {

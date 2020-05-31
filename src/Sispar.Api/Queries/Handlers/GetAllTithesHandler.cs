@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Sispar.Api.Queries.Responses;
-using Sispar.Core.Contracts.Repositories;
+using Sispar.Domain.TitheModule.Abstractions;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;

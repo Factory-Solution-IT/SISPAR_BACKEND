@@ -1,9 +1,13 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Results;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sispar.Core.Entities
+namespace Sispar.Domain.BaseModule
 {
     public class Entity
     {

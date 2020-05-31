@@ -2,10 +2,10 @@
 using MediatR;
 using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
-using Sispar.Core.Entities.Validators;
 using Sispar.Core.Notification;
-using Sispar.Core.Contracts.Repositories;
-using Sispar.Core.Entities;
+using Sispar.Domain.TitheModule;
+using Sispar.Domain.TitheModule.Abstractions;
+using Sispar.Domain.TitheModule.Validators;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -33,7 +33,7 @@ namespace Sispar.Api.CommandHandlers
             var tithe = _mapper.Map<Tithe>(request);
 
             if (!tithe.Validate(tithe, new TitheValidator()))
-            { 
+            {
                 _notificationContext.AddNotifications(tithe.ValidationResult);
                 return await Task.FromResult(new CreateTitheResponse());
             }
@@ -52,7 +52,7 @@ namespace Sispar.Api.CommandHandlers
             _mapper.Map(request, titheFromRepo);
 
             if (!titheFromRepo.Validate(titheFromRepo, new TitheValidator()))
-            { 
+            {
                 _notificationContext.AddNotifications(titheFromRepo.ValidationResult);
                 return await Task.FromResult(new NoContentResponse());
             }

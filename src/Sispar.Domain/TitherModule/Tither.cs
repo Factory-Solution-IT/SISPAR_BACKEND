@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Sispar.Domain.BaseModule;
+using Sispar.Domain.TitheModule;
+using Sispar.Domain.TitherModule.Enums;
+using System;
 using System.Collections.Generic;
-using Sispar.Core.Entities.Enums;
 
-namespace Sispar.Core.Entities
+namespace Sispar.Domain.TitherModule
 {
     public class Tither : Entity
     {
@@ -15,7 +17,7 @@ namespace Sispar.Core.Entities
         public string Cellphone { get; set; }
         public DateTime? MarriegeDate { get; set; }
         public string NameSpouse { get; set; }
-        public  DateTime? DateBirthSpouse { get; set; }
+        public DateTime? DateBirthSpouse { get; set; }
         public bool Active { get; set; } = true;
         public string AddressNumber { get; set; }
         public string AddressComplent { get; set; }

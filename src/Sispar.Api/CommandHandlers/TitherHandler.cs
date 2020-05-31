@@ -2,10 +2,10 @@
 using MediatR;
 using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
-using Sispar.Core.Entities.Validators;
 using Sispar.Core.Notification;
-using Sispar.Core.Contracts.Repositories;
-using Sispar.Core.Entities;
+using Sispar.Domain.TitherModule;
+using Sispar.Domain.TitherModule.Abstractions;
+using Sispar.Domain.TitherModule.Validators;
 using System.Threading;
 using System.Threading.Tasks;
 

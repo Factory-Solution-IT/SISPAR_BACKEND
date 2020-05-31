@@ -1,11 +1,11 @@
-﻿using Sispar.Core.Entities;
+﻿using Sispar.Domain.BaseModule.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Core.Contracts.Repositories
+namespace Sispar.Domain.UserModule.Abstractions
 {
     public interface IUserRepository : IRepository<User>
     {

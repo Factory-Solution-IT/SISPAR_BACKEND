@@ -1,23 +1,23 @@
-using System.Threading;
-using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using Sispar.Api.Commands.Responses;
-using Sispar.Core.Notification;
-using Sispar.Core.Contracts.Repositories;
-using Sispar.Common.Helpers;
 using Sispar.Api.Commands;
+using Sispar.Api.Commands.Responses;
+using Sispar.Common.Helpers;
+using Sispar.Core.Notification;
+using Sispar.Domain.UserModule.Abstractions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Sispar.Api.CommandHandlers
 {
-    public class LoginHandler : 
+    public class LoginHandler :
         IRequestHandler<LoginCommand, LoginResponse>
     {
         private readonly IMapper _mapper;
         private readonly NotificationContext _notificationContext;
         private readonly IUserRepository _userRepository;
 
-        public LoginHandler(IMapper mapper, NotificationContext notificationContext, 
+        public LoginHandler(IMapper mapper, NotificationContext notificationContext,
             IUserRepository userRepository)
         {
             _mapper = mapper;
@@ -39,7 +39,7 @@ namespace Sispar.Api.CommandHandlers
                 _notificationContext.AddNotification("Not Found", "Senha inválida");
                 return await Task.FromResult(new LoginResponse());
             }
-            
+
             var result = _mapper.Map<LoginResponse>(user);
             result.IsValid = true;
             return await Task.FromResult(result);
