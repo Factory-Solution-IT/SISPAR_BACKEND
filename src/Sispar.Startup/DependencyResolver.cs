@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sispar.Core.Notification;
-using Sispar.Domain.Contracts.Repositories;
+using Sispar.Core.Contracts.Repositories;
 using Sispar.Infra.EF;
 using Sispar.Infra.EF.Repositories;
 

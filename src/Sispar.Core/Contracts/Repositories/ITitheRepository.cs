@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Sispar.Domain.Entities;
+using Sispar.Core.Entities;
 
-namespace Sispar.Domain.Contracts.Repositories
+namespace Sispar.Core.Contracts.Repositories
 {
     public interface ITitheRepository : IRepository<Tithe>
     {

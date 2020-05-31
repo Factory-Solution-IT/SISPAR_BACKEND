@@ -1,4 +1,4 @@
-﻿namespace Sispar.Domain.Entities.Enums
+﻿namespace Sispar.Core.Entities.Enums
 {
     public enum MatiralStatus 
     {

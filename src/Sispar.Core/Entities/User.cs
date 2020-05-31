@@ -2,7 +2,7 @@
 using Sispar.Common.Validation;
 using System;
 
-namespace Sispar.Domain.Entities
+namespace Sispar.Core.Entities
 {
     public class User : Entity
     {

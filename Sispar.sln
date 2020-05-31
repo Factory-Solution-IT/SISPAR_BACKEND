@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Common", "src\Sispar.Common\Sispar.Common.csproj", "{85A1FC21-3C28-4974-ABBB-EF7D462AC67B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Domain", "src\Sispar.Core\Sispar.Domain.csproj", "{2D8F1C8A-F4EA-437C-A8C8-9C3E03661CC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Core", "src\Sispar.Core\Sispar.Core.csproj", "{2D8F1C8A-F4EA-437C-A8C8-9C3E03661CC9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Business", "src\Sispar.Business\Sispar.Business.csproj", "{760E5558-7A6D-4F6D-BF91-AF9F474C5601}"
 EndProject

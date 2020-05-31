@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sispar.Domain.Contracts.Repositories;
-using Sispar.Domain.Entities;
+using Sispar.Core.Contracts.Repositories;
+using Sispar.Core.Entities;
 using Sispar.Infra.EF.Repositories;
 using System.Linq;
 using System.Threading.Tasks;

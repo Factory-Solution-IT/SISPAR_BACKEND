@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sispar.Domain.Entities.Enums;
+using Sispar.Core.Entities.Enums;
 
-namespace Sispar.Domain.Entities
+namespace Sispar.Core.Entities
 {
     public class Tither : Entity
     {

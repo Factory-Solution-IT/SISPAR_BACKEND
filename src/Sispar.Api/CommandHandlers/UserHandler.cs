@@ -3,13 +3,13 @@ using MediatR;
 using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
 using Sispar.Core.Notification;
-using Sispar.Domain.Contracts.Repositories;
-using Sispar.Domain.Entities;
-using Sispar.Domain.Entities.Validators;
+using Sispar.Core.Contracts.Repositories;
+using Sispar.Core.Entities;
+using Sispar.Core.Entities.Validators;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Handlers
+namespace Sispar.Api.CommandHandlers
 {
     public class UserHandler :
         IRequestHandler<CreateUserCommand, CreateUserResponse>,

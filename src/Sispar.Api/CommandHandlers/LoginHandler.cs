@@ -4,10 +4,11 @@ using AutoMapper;
 using MediatR;
 using Sispar.Api.Commands.Responses;
 using Sispar.Core.Notification;
-using Sispar.Domain.Contracts.Repositories;
+using Sispar.Core.Contracts.Repositories;
 using Sispar.Common.Helpers;
+using Sispar.Api.Commands;
 
-namespace Sispar.Api.Commands.Handlers
+namespace Sispar.Api.CommandHandlers
 {
     public class LoginHandler : 
         IRequestHandler<LoginCommand, LoginResponse>

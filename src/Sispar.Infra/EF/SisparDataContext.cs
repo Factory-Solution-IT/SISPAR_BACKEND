@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Sispar.Domain.Entities;
+using Sispar.Core.Entities;
 
 namespace Sispar.Infra.EF
 {

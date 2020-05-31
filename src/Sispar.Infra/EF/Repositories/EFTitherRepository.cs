@@ -1,5 +1,5 @@
-﻿using Sispar.Domain.Contracts.Repositories;
-using Sispar.Domain.Entities;
+﻿using Sispar.Core.Contracts.Repositories;
+using Sispar.Core.Entities;
 
 namespace Sispar.Infra.EF.Repositories
 {

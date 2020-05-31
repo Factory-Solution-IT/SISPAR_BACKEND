@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sispar.Common\Sispar.Common.csproj" />
-    <ProjectReference Include="..\Sispar.Core\Sispar.Domain.csproj" />
+    <ProjectReference Include="..\Sispar.Core\Sispar.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

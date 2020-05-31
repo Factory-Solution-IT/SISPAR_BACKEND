@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sispar.Domain.Contracts;
-using Sispar.Domain.Entities;
+using Sispar.Core.Contracts;
+using Sispar.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Sispar.Domain.Entities
+namespace Sispar.Core.Entities
 {
     public class Entity
     {

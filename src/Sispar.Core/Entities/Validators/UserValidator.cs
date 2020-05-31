@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Domain.Entities.Validators
+namespace Sispar.Core.Entities.Validators
 {
     public class UserValidator : AbstractValidator<User>
     {

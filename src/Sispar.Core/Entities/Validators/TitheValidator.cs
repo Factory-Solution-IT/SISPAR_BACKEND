@@ -1,5 +1,5 @@
 using FluentValidation;
-using Sispar.Domain.Entities;
+using Sispar.Core.Entities;
 using System;
 
 namespace Sispar.Core.Entities.Validators

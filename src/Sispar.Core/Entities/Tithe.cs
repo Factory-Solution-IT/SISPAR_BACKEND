@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Domain.Entities
+namespace Sispar.Core.Entities
 {
     public class Tithe : Entity
     {
