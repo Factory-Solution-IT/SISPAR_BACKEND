@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sispar.Application\Sispar.Application.csproj" />
     <ProjectReference Include="..\Sispar.Common\Sispar.Common.csproj" />
     <ProjectReference Include="..\Sispar.Core\Sispar.Core.csproj" />
     <ProjectReference Include="..\Sispar.Startup\Sispar.Startup.csproj" />

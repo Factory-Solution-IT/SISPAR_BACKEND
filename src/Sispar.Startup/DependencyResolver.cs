@@ -1,10 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Sispar.Core.Notification;
 using Sispar.Domain.TitheModule.Abstractions;
 using Sispar.Domain.TitherModule.Abstractions;
 using Sispar.Domain.UserModule.Abstractions;
+using Sispar.Domain.UserModule.Commands;
 using Sispar.Infra.EF;
 using Sispar.Infra.EF.Repositories;
+using System;
+using System.Reflection;
 
 namespace Sispar.Startup
 {
@@ -23,6 +27,9 @@ namespace Sispar.Startup
 
             services.AddScoped<SisparDataContext>();
             services.AddScoped<NotificationContext>();
+
+            var assembly = AppDomain.CurrentDomain.Load("Sispar.Application");
+            services.AddMediatR(assembly);
 
             services.AddTransient<IUserRepository, EFUserRepository>();
 

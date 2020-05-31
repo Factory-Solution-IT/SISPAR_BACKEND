@@ -5,12 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sispar.Common\Sispar.Common.csproj" />
+    <Compile Remove="Contracts\Services\**" />
+    <EmbeddedResource Remove="Contracts\Services\**" />
+    <None Remove="Contracts\Services\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Services\" />
-    <Folder Include="Entities\" />
+    <ProjectReference Include="..\Sispar.Common\Sispar.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
