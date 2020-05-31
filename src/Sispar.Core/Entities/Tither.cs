@@ -16,7 +16,13 @@ namespace Sispar.Domain.Entities
         public DateTime? MarriegeDate { get; set; }
         public string NameSpouse { get; set; }
         public  DateTime? DateBirthSpouse { get; set; }
-        public Boolean Active { get; set; } = true;
+        public bool Active { get; set; } = true;
+        public string AddressNumber { get; set; }
+        public string AddressComplent { get; set; }
+        public string ZipCode { get; set; }
+        public string Neighborhood { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
 
         public virtual ICollection<Tithe> Tithes { get; set; }// = new List<Tithe>();
     }
