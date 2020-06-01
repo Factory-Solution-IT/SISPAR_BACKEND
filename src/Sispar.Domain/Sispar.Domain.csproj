@@ -6,10 +6,16 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="8.6.2" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Sispar.Core\Sispar.Core.csproj" />
+    <ProjectReference Include="..\Sispar.DataContract\Sispar.DataContract.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UserModule\Queries\" />
   </ItemGroup>
 
 </Project>

@@ -15,9 +15,9 @@ namespace Sispar.Domain.UserModule
 
         public void SetPassword(string password, string confirmPassword)
         {
-            AssertionConcern.AssertArgumentNotEmpty(password, "Senha não pode ser vazio");
-            AssertionConcern.AssertArgumentNotEmpty(confirmPassword, "Confirma senha não pode ser vazio");
-            AssertionConcern.AssertArgumentEquals(password, confirmPassword, "Senha e confirma senha são diferentes");
+            // AssertionConcern.AssertArgumentNotEmpty(password, "Senha não pode ser vazio");
+            // AssertionConcern.AssertArgumentNotEmpty(confirmPassword, "Confirma senha não pode ser vazio");
+            // AssertionConcern.AssertArgumentEquals(password, confirmPassword, "Senha e confirma senha são diferentes");
 
             this.Password = password.Encrypt();
         }

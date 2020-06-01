@@ -10,9 +10,11 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Sispar.Api.Filters;
 using Sispar.Api.Profiles;
+using Sispar.Domain.UserModule.Commands;
 using Sispar.Startup;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,13 +33,6 @@ namespace Sispar.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(options => options.Filters.Add<NotificationFilter>());
-
-            //services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
-            //{
-            //    builder.AllowAnyOrigin()
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader();
-            //}));
 
             // Auto Mapper Configurations
             var mappingConfig = new MapperConfiguration(mc =>

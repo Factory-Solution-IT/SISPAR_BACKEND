@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sispar.Api.Commands;
 using Sispar.Api.Queries;
+using Sispar.Domain.UserModule.Commands;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -53,20 +54,13 @@ namespace Sispar.Api.Controllers
             return NoContent();
         }
 
-        //[HttpPost]
-        //[Route("ChangePassword")]
-        //public IActionResult ChangePassword([FromBody] Models.Tither.ChangePasswordVM model)
-        //{
-        //    try
-        //    {
-        //        _userService.ChangePassword(model.Username, model.Password, model.NewPassword, model.ConfirmNewPassword);
-        //        return NoContent();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+        // POST api/users
+        [HttpPost("changePassword")]
+        public async Task<IActionResult> ChangePasswork(ChangePasswordCommand changePasswordCommand)
+        {
+            await _mediator.Send(changePasswordCommand);
+            return NoContent();
+        }
 
         // DELETE api/users/{id}
         [HttpDelete("{id}")]
