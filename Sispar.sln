@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Common", "src\Sispar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Core", "src\Sispar.Core\Sispar.Core.csproj", "{2D8F1C8A-F4EA-437C-A8C8-9C3E03661CC9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Business", "src\Sispar.Business\Sispar.Business.csproj", "{760E5558-7A6D-4F6D-BF91-AF9F474C5601}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Infra", "src\Sispar.Infra\Sispar.Infra.csproj", "{E31E43A8-6866-45E2-BA9B-468828E81425}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Startup", "src\Sispar.Startup\Sispar.Startup.csproj", "{D4E30F97-47A8-4772-9290-D7E58D1D797C}"
@@ -17,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Api", "src\Sispar.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Domain", "src\Sispar.Domain\Sispar.Domain.csproj", "{2F659315-B8CD-49FB-B666-E4044ECEA63B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sispar.Application", "src\Sispar.Application\Sispar.Application.csproj", "{6862EEA4-EACF-4712-96BE-7C013B8ABAE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.Application", "src\Sispar.Application\Sispar.Application.csproj", "{6862EEA4-EACF-4712-96BE-7C013B8ABAE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sispar.DataContract", "src\Sispar.DataContract\Sispar.DataContract.csproj", "{6DB3B050-8FA2-49A5-A88D-B00A3A008C99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispar.DataContract", "src\Sispar.DataContract\Sispar.DataContract.csproj", "{6DB3B050-8FA2-49A5-A88D-B00A3A008C99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{2D8F1C8A-F4EA-437C-A8C8-9C3E03661CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D8F1C8A-F4EA-437C-A8C8-9C3E03661CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D8F1C8A-F4EA-437C-A8C8-9C3E03661CC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{760E5558-7A6D-4F6D-BF91-AF9F474C5601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{760E5558-7A6D-4F6D-BF91-AF9F474C5601}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{760E5558-7A6D-4F6D-BF91-AF9F474C5601}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{760E5558-7A6D-4F6D-BF91-AF9F474C5601}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E31E43A8-6866-45E2-BA9B-468828E81425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E31E43A8-6866-45E2-BA9B-468828E81425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E31E43A8-6866-45E2-BA9B-468828E81425}.Release|Any CPU.ActiveCfg = Release|Any CPU
