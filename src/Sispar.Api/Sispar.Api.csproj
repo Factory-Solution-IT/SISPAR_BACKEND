@@ -14,7 +14,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
   </ItemGroup>
 
@@ -22,6 +22,7 @@
     <ProjectReference Include="..\Sispar.Application\Sispar.Application.csproj" />
     <ProjectReference Include="..\Sispar.Common\Sispar.Common.csproj" />
     <ProjectReference Include="..\Sispar.Core\Sispar.Core.csproj" />
+    <ProjectReference Include="..\Sispar.Infra\Sispar.Infra.csproj" />
     <ProjectReference Include="..\Sispar.Startup\Sispar.Startup.csproj" />
   </ItemGroup>
 
