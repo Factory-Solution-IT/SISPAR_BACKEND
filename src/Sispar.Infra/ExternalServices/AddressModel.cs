@@ -2,15 +2,23 @@
 {
     public class AddressModel
     {
-        public string cep { get; set; }
-        public string logradouro { get; set; }
-        public string complemento { get; set; }
-        public string bairro { get; set; }
-        public string localidade { get; set; }
-        public string uf { get; set; }
-        public string unidade { get; set; }
-        public string ibge { get; set; }
-        public string gia { get; set; }
+        public AddressModel(string zipCode, string address, string complement, 
+            string neighborhood, string city, string state)
+        {
+            ZipCode = zipCode;
+            Address = address;
+            Complement = complement;
+            Neighborhood = neighborhood;
+            City = city;
+            State = state;
+        }
+
+        public string ZipCode { get; private set; }
+        public string Address { get; private set; }
+        public string Complement { get; private set; }
+        public string Neighborhood { get; private set; }
+        public string City { get; private set; }
+        public string State { get; private set; }
 
     }
 }
