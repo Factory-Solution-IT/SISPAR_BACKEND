@@ -17,10 +17,10 @@ namespace Sispar.Api.Controllers
         [HttpGet("{zipCode}")]
         public async Task<IActionResult> GetByZipCoode(string zipCode)
         {
-            var addressService = new AddressService(zipCode);
+            var addressService = new AddressService();
 
-            var result = await addressService.DoSearh();
-            return Ok(result);
+            var result = await addressService.DoSearh(zipCode);
+            return result != null ? Ok(result) : (IActionResult) NotFound();
         }
     }
 }
