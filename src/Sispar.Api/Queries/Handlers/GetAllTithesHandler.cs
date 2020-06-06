@@ -3,6 +3,7 @@ using MediatR;
 using Sispar.Api.Queries.Responses;
 using Sispar.Domain.TitheModule.Abstractions;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace Sispar.Api.Queries.Handlers
         {
             var tithes = await _titheRepository.GetAllAsync();
 
-            var result = _mapper.Map<IEnumerable<TitheResponse>>(tithes);
+            var result = _mapper.Map<IEnumerable<TitheResponse>>(tithes.Where(_ => _.Deleted == false));
 
             return await Task.FromResult(result);
         }

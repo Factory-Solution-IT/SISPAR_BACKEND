@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sispar.Infra.EF;
 
 namespace Sispar.Infra.Migrations
 {
     [DbContext(typeof(SisparDataContext))]
-    partial class SisparDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200606022534_AdicionadoCamposDeleteTithe")]
+    partial class AdicionadoCamposDeleteTithe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

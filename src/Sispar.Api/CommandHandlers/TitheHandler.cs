@@ -66,7 +66,14 @@ namespace Sispar.Api.CommandHandlers
         {
             var tithe = await _titheRepository.GetByIdAsync(request.Id);
 
-            _titheRepository.Delete(tithe);
+            if (tithe == null)
+            {
+                _notificationContext.AddNotification("NotFound", "Contribuição não encontrada");
+                return null;
+            }
+
+            tithe.Delete();
+            _titheRepository.Edit(tithe);
 
             return await Task.FromResult(new NoContentResponse());
         }

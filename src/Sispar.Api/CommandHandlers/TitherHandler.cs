@@ -63,9 +63,18 @@ namespace Sispar.Api.CommandHandlers
         public async Task<NoContentResponse> Handle(DeleteTitherCommand request, CancellationToken cancellationToken)
         {
             var tither = await _titherRepository.GetByIdAsync(request.Id);
-            _titherRepository.Delete(tither);
 
-            return await Task.FromResult(new NoContentResponse());
+            if (tither == null)
+            {
+                _notificationContext.AddNotification("NotFound", "Dizimista não encontrado");
+                return null;
+            }
+
+            tither.Delete();
+
+            _titherRepository.Edit(tither);
+
+            return null;
         }
     }
 }

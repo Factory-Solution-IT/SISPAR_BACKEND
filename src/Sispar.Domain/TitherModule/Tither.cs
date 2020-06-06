@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Sispar.Domain.TitherModule
 {
-    public class Tither : Entity
+    public class Tither : DeleteableEntity
     {
         public string Name { get; set; }
         public string Address { get; set; }
@@ -27,5 +27,11 @@ namespace Sispar.Domain.TitherModule
         public string State { get; set; }
 
         public virtual ICollection<Tithe> Tithes { get; set; }// = new List<Tithe>();
+
+        public void Delete()
+        {
+            Deleted = true;
+            DeletedAt = DateTime.Now;
+        }
     }
 }

@@ -21,7 +21,8 @@ namespace Sispar.Api.Queries.Handlers
         public async Task<TitherResponse> Handle(GetTitherByIdQuery request, CancellationToken cancellationToken)
         {
             var tither = await _titherRepository.GetByIdAsync(request.Id);
-            var result = _mapper.Map<TitherResponse>(tither);
+
+            var result = (tither != null && tither.Deleted == false) ? _mapper.Map<TitherResponse>(tither) : null;
 
             return await Task.FromResult(result);
         }

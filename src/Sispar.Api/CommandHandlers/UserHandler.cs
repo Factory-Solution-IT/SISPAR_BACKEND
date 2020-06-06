@@ -73,7 +73,16 @@ namespace Sispar.Api.CommandHandlers
         public async Task<NoContentResponse> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByIdAsync(request.Id);
-            _userRepository.Delete(user);
+
+            if (user == null)
+            {
+                _notificationContext.AddNotification("NotFound", "Usuário não encontrado");
+                return null;
+            }
+
+            user.Delete();
+
+            _userRepository.Edit(user);
 
             return await Task.FromResult(new NoContentResponse());
         }

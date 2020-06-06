@@ -28,7 +28,7 @@ namespace Sispar.Api.CommandHandlers
         public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByUserNameAsync(request.Username);
-            if (user == null)
+            if (user == null || user.Deleted == true)
             {
                 _notificationContext.AddNotification("Not Found", "Usuário não encontrado");
                 return await Task.FromResult(new LoginResponse());

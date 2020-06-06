@@ -22,7 +22,7 @@ namespace Sispar.Api.Queries.Handlers
         {
             var tithe = await _titheRepository.GetByIdAsync(request.Id);
 
-            var result = _mapper.Map<TitheResponse>(tithe);
+            var result = (tithe != null && tithe.Deleted == false) ? _mapper.Map<TitheResponse>(tithe) : null;
 
             return await Task.FromResult(result);
         }

@@ -5,7 +5,7 @@ using System;
 
 namespace Sispar.Domain.UserModule
 {
-    public class User : Entity
+    public class User : DeleteableEntity
     {
         public string Username { get; set; }
         public string Password { get; set; }
@@ -25,6 +25,12 @@ namespace Sispar.Domain.UserModule
         public void EncriptPassword()
         {
             Password = Password.Encrypt();
+        }
+
+        public void Delete()
+        {
+            Deleted = true;
+            DeletedAt = DateTime.Now;
         }
     }
 }

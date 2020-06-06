@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sispar.Infra.EF;
 
 namespace Sispar.Infra.Migrations
 {
     [DbContext(typeof(SisparDataContext))]
-    partial class SisparDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200606020130_AdicionadoCamposDeleteTither")]
+    partial class AdicionadoCamposDeleteTither
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,12 +29,6 @@ namespace Sispar.Infra.Migrations
 
                     b.Property<DateTime>("DateContribution")
                         .HasColumnType("date");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");
@@ -135,19 +131,19 @@ namespace Sispar.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fadab4d9-f14a-4ec1-b62d-e49c304ff64e"),
+                            Id = new Guid("0baaddd4-39bf-4aff-8cdb-fe57ecc661db"),
                             Active = (short)1,
                             Address = "rua sem saida",
-                            BirthDate = new DateTime(2020, 6, 6, 2, 25, 33, 470, DateTimeKind.Utc).AddTicks(3401),
+                            BirthDate = new DateTime(2020, 6, 6, 2, 1, 30, 10, DateTimeKind.Utc).AddTicks(295),
                             CPF = "999.999.999-99",
                             Cellphone = "11 9.9999-9999",
-                            DateBirthSpouse = new DateTime(2020, 6, 6, 2, 25, 33, 470, DateTimeKind.Utc).AddTicks(8109),
+                            DateBirthSpouse = new DateTime(2020, 6, 6, 2, 1, 30, 10, DateTimeKind.Utc).AddTicks(7354),
                             Deleted = false,
-                            MarriegeDate = new DateTime(2020, 6, 6, 2, 25, 33, 470, DateTimeKind.Utc).AddTicks(6428),
+                            MarriegeDate = new DateTime(2020, 6, 6, 2, 1, 30, 10, DateTimeKind.Utc).AddTicks(4855),
                             MatiralStatus = (short)0,
                             Name = "Jose",
                             NameSpouse = "Maria",
-                            RegisterDate = new DateTime(2020, 6, 6, 2, 25, 33, 470, DateTimeKind.Utc).AddTicks(1601),
+                            RegisterDate = new DateTime(2020, 6, 6, 2, 1, 30, 9, DateTimeKind.Utc).AddTicks(7974),
                             Telephone = "11 9.9999-9999"
                         });
                 });
@@ -160,12 +156,6 @@ namespace Sispar.Infra.Migrations
 
                     b.Property<short>("Active")
                         .HasColumnType("smallint");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -197,24 +187,22 @@ namespace Sispar.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("62875d2b-2a9b-4347-a0bc-a2267a19222b"),
+                            Id = new Guid("7067daa5-0ea9-4105-bc94-405e33987654"),
                             Active = (short)1,
-                            Deleted = false,
                             FirstName = "Felipe",
                             LastName = "Santos",
                             Password = "916c1678d3d28eb3e7798b9cf7acfbb6",
-                            RegisterDate = new DateTime(2020, 6, 6, 2, 25, 33, 457, DateTimeKind.Utc).AddTicks(6887),
+                            RegisterDate = new DateTime(2020, 6, 6, 2, 1, 29, 971, DateTimeKind.Utc).AddTicks(179),
                             Username = "milton"
                         },
                         new
                         {
-                            Id = new Guid("1aa3f943-1088-4ca9-9351-97f1a5076436"),
+                            Id = new Guid("97889751-8611-4cb2-a6d4-5fa9611b870d"),
                             Active = (short)1,
-                            Deleted = false,
                             FirstName = "Milton",
                             LastName = "Honji",
                             Password = "916c1678d3d28eb3e7798b9cf7acfbb6",
-                            RegisterDate = new DateTime(2020, 6, 6, 2, 25, 33, 468, DateTimeKind.Utc).AddTicks(1258),
+                            RegisterDate = new DateTime(2020, 6, 6, 2, 1, 30, 5, DateTimeKind.Utc).AddTicks(5100),
                             Username = "felipe"
                         });
                 });

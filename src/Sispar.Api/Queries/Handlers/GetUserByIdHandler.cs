@@ -21,7 +21,8 @@ namespace Sispar.Api.Queries.Handlers
         public async Task<UserResponse> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByIdAsync(request.Id);
-            var result = _mapper.Map<UserResponse>(user);
+
+            var result = (user != null && user.Deleted == false) ? _mapper.Map<UserResponse>(user) : null;
 
             return await Task.FromResult(result);
         }

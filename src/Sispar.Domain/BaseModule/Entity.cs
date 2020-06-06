@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sispar.Domain.BaseModule
 {
-    public class Entity
+    public abstract class Entity
     {
         public Guid Id { get; set; }
         public DateTime RegisterDate { get; set; } = DateTime.UtcNow;
