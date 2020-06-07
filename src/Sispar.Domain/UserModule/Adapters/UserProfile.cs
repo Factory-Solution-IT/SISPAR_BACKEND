@@ -19,7 +19,7 @@ namespace Sispar.Domain.UserModule.Adapters
             CreateMap<UserParameters, User>();
             //CreateMap<User, CreateUserResponse>();
             //CreateMap<UpdateUserCommand, User>();
-            //CreateMap<User, LoginResponse>();
+            CreateMap<User, LoginModel>();
         }
     }
 }

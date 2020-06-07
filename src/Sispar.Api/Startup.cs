@@ -1,4 +1,3 @@
-using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -9,14 +8,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Sispar.Api.Filters;
-using Sispar.Api.Profiles;
-using Sispar.Domain.UserModule.Commands;
 using Sispar.Startup;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Sispar.Api
 {
@@ -33,17 +28,6 @@ namespace Sispar.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(options => options.Filters.Add<NotificationFilter>());
-
-            // Auto Mapper Configurations
-            //var mappingConfig = new MapperConfiguration(mc =>
-            //{
-            //    mc.AddProfile(new TitherProfile());
-            //    mc.AddProfile(new TitheProfile());
-            //    mc.AddProfile(new UserProfile());
-            //});
-
-            //IMapper mapper = mappingConfig.CreateMapper();
-            //services.AddSingleton(mapper);
 
             // services.AddDbContext<SisparDataContext>(options => {
             //     //options.UseSqlServer("Server=sql5059.site4now.net;Database=DB_A5E01E_sisparhomolog;User Id=DB_A5E01E_sisparhomolog_admin;Password=metal001;");

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands.Responses
+namespace Sispar.DataContract.TitheModule.Parameters
 {
-    public class CreateTitheResponse
+    public class TitheParameters
     {
-        public Guid Id { get; set; }
         public decimal ValueContribution { get; set; }
         public DateTime DateContribution { get; set; }
         public Guid TitherId { get; set; }

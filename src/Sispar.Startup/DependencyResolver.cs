@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Sispar.Core.Notification;
 using Sispar.Domain.TitheModule.Abstractions;
+using Sispar.Domain.TitheModule.Adapters;
 using Sispar.Domain.TitherModule.Abstractions;
 using Sispar.Domain.TitherModule.Adapters;
 using Sispar.Domain.UserModule.Abstractions;
@@ -37,7 +38,7 @@ namespace Sispar.Startup
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new TItherProfile());
-                //mc.AddProfile(new TitheProfile());
+                mc.AddProfile(new TitheProfile());
                 mc.AddProfile(new UserProfile());
             });
 

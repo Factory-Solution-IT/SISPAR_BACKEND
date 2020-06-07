@@ -1,14 +1,14 @@
-﻿using MediatR;
-using Sispar.Api.Commands.Responses;
+﻿using Sispar.Domain.BaseModule.Command;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands
+namespace Sispar.Domain.TitheModule.Commands
 {
-    public class DeleteTitheCommand : IRequest<NoContentResponse>
+    public class DeleteTitheCommand : Command<bool>
     {
         public Guid Id { get; set; }
 

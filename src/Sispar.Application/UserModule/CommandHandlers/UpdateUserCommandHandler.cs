@@ -28,7 +28,7 @@ namespace Sispar.Application.UserModule.CommandHandlers
         {
             var userFromRepo = await _userRepository.GetByIdAsync(request.Id);
 
-            _mapper.Map(request, userFromRepo);
+            _mapper.Map(request.parameters, userFromRepo);
 
             if (!userFromRepo.Validate(userFromRepo, new UserValidator()))
             {

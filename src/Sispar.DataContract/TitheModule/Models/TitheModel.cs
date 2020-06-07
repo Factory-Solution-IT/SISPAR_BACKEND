@@ -1,15 +1,14 @@
-﻿using MediatR;
-using Sispar.Api.Commands.Responses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands
+namespace Sispar.DataContract.TitheModule.Models
 {
-    public class CreateTitheCommand : IRequest<CreateTitheResponse>
+    public class TitheModel
     {
+        public Guid Id { get; set; }
         public decimal ValueContribution { get; set; }
         public DateTime DateContribution { get; set; }
         public Guid TitherId { get; set; }
