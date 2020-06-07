@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Queries.Responses
+namespace Sispar.DataContract.UserModule.Parameters
 {
-    public class UserResponse
+    public class UserParameters
     {
-        public Guid Id { get; set; }
         public string Username { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }

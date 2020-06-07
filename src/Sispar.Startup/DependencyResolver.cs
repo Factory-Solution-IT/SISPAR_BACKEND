@@ -6,6 +6,7 @@ using Sispar.Domain.TitheModule.Abstractions;
 using Sispar.Domain.TitherModule.Abstractions;
 using Sispar.Domain.TitherModule.Adapters;
 using Sispar.Domain.UserModule.Abstractions;
+using Sispar.Domain.UserModule.Adapters;
 using Sispar.Domain.UserModule.Commands;
 using Sispar.Infra.EF;
 using Sispar.Infra.EF.Repositories;
@@ -37,7 +38,7 @@ namespace Sispar.Startup
             {
                 mc.AddProfile(new TItherProfile());
                 //mc.AddProfile(new TitheProfile());
-                //mc.AddProfile(new UserProfile());
+                mc.AddProfile(new UserProfile());
             });
 
             IMapper mapper = mappingConfig.CreateMapper();

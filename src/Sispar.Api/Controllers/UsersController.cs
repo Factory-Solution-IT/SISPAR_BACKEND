@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sispar.Api.Commands;
-using Sispar.Api.Queries;
+using Sispar.DataContract.UserModule.Parameters;
 using Sispar.Domain.UserModule.Commands;
+using Sispar.Domain.UserModule.Queries;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,7 +26,7 @@ namespace Sispar.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
-            var result = await _mediator.Send(new GetAllUsersQuery());
+            var result = await _mediator.Send(new ListUserQuery());
             return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
         }
 
@@ -34,23 +34,23 @@ namespace Sispar.Api.Controllers
         [HttpGet("{id}", Name = "GetUserById")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
-            var result = await _mediator.Send(new GetUserByIdQuery(id));
+            var result = await _mediator.Send(new GetUserQuery(id));
             return (result == null) ? NotFound() : (IActionResult)Ok(result);
         }
 
         // POST api/users
         [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserCommand createUserCommand)
+        public async Task<IActionResult> CreateUser(UserParameters parameters)
         {
-            var result = await _mediator.Send(createUserCommand);
+            var result = await _mediator.Send(new CreateUserCommand(parameters));
             return CreatedAtRoute(nameof(GetUserById), new { result.Id }, result);
         }
 
         // PUT api/users
-        [HttpPut]
-        public async Task<IActionResult> UpdateUser(UpdateUserCommand updateUserCommand)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(Guid id, UserParameters parameters)
         {
-            await _mediator.Send(updateUserCommand);
+            await _mediator.Send(new UpdateUserCommand(id, parameters));
             return NoContent();
         }
 

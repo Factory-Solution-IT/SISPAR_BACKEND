@@ -17,7 +17,7 @@ namespace Sispar.Domain.TitherModule.Adapters
             //Source -> Target
             CreateMap<Tither, TitherModel>();
             CreateMap<TitherParameters, Tither>();
-            CreateMap<CreateTitherCommand, Tither>();
+            // CreateMap<CreateTitherCommand, Tither>();
             //CreateMap<UpdateTitherCommand, Tither>();
 
             //CreateMap<CommandUpdateDto, Command>();

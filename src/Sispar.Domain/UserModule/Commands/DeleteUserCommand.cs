@@ -1,18 +1,17 @@
-﻿using MediatR;
-using Sispar.Api.Queries.Responses;
+﻿using Sispar.Domain.BaseModule.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Queries
+namespace Sispar.Domain.UserModule.Commands
 {
-    public class GetUserByIdQuery : IRequest<UserResponse>
+    public class DeleteUserCommand : Command<bool>
     {
         public Guid Id { get; set; }
 
-        public GetUserByIdQuery(Guid id)
+        public DeleteUserCommand(Guid id)
         {
             Id = id;
         }

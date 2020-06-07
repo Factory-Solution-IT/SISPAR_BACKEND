@@ -14,8 +14,4 @@
     <ProjectReference Include="..\Sispar.DataContract\Sispar.DataContract.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UserModule\Queries\" />
-  </ItemGroup>
-
 </Project>
