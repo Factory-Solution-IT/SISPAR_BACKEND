@@ -1,30 +1,31 @@
 ﻿using AutoMapper;
 using MediatR;
-using Sispar.Api.Queries.Responses;
+using Sispar.DataContract.TitherModule.Models;
 using Sispar.Domain.TitherModule.Abstractions;
+using Sispar.Domain.TitherModule.Queries;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sispar.Api.Queries.Handlers
+namespace Sispar.Application.TitherModule.QueryHandlers
 {
-    public class GetAllTithersHandler : IRequestHandler<GetAllTithersQuery, IEnumerable<TitherResponse>>
+    public class ListTitherQueryHandler : IRequestHandler<ListTitherQuery, List<TitherModel>>
     {
         private readonly IMapper _mapper;
         private readonly ITitherRepository _titherRepository;
 
-        public GetAllTithersHandler(IMapper mapper, ITitherRepository titherRepository)
+        public ListTitherQueryHandler(IMapper mapper, ITitherRepository titherRepository)
         {
             _mapper = mapper;
             _titherRepository = titherRepository;
         }
 
-        public async Task<IEnumerable<TitherResponse>> Handle(GetAllTithersQuery request, CancellationToken cancellationToken)
+        public async Task<List<TitherModel>> Handle(ListTitherQuery request, CancellationToken cancellationToken)
         {
             var tithers = await _titherRepository.GetAllAsync();
 
-            var result = _mapper.Map<IEnumerable<TitherResponse>>(tithers.Where(_ => _.Deleted == false));
+            var result = _mapper.Map<List<TitherModel>>(tithers.Where(_ => _.Deleted == false));
 
             return await Task.FromResult(result);
         }

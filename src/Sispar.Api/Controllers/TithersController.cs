@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sispar.Api.Commands;
-using Sispar.Api.Queries;
-using Sispar.Api.Queries.Handlers;
+using Sispar.DataContract.TitherModule.Parameters;
+using Sispar.Domain.TitherModule.Commands;
+using Sispar.Domain.TitherModule.Queries;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,7 +26,7 @@ namespace Sispar.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllTithers()
         {
-            var result = await _mediator.Send(new GetAllTithersQuery());
+            var result = await _mediator.Send(new ListTitherQuery());
 
             return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
         }
@@ -35,25 +35,24 @@ namespace Sispar.Api.Controllers
         [HttpGet("{id}", Name = "GetTitherById")]
         public async Task<IActionResult> GetTitherById(Guid id)
         {
-            var query = new GetTitherByIdQuery(id);
-            var result = await _mediator.Send(query);
+            var result = await _mediator.Send(new GetTitherQuery(id));
 
             return (result == null) ? NotFound() : (IActionResult)Ok(result);
         }
 
         //POST api/tithers
         [HttpPost]
-        public async Task<IActionResult> CreateTither(CreateTitherCommand createTitherCommand)
+        public async Task<IActionResult> CreateTither(TitherParameters parameters)
         {
-            var result = await _mediator.Send(createTitherCommand);
+            var result = await _mediator.Send(new CreateTitherCommand(parameters));
             return CreatedAtRoute(nameof(GetTitherById), new { result.Id }, result);
         }
 
         //PUT api/tithers
-        [HttpPut()]
-        public async Task<IActionResult> UpdateTither(UpdateTitherCommand updateTitherRequest)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTither(Guid id, TitherParameters parameters)
         {
-            await _mediator.Send(updateTitherRequest);
+            await _mediator.Send(new UpdateTitherCommand(id, parameters));
             return NoContent();
         }
 
@@ -61,15 +60,9 @@ namespace Sispar.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTither(Guid id)
         {
-            var request = new DeleteTitherCommand(id);
-            await _mediator.Send(request);
+            await _mediator.Send(new DeleteTitherCommand(id));
 
             return NoContent();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            //_titherService.Dispose();
         }
     }
 }

@@ -1,10 +1,9 @@
-﻿using MediatR;
-using Sispar.Api.Commands.Responses;
+﻿using Sispar.Domain.BaseModule.Command;
 using System;
 
-namespace Sispar.Api.Commands
+namespace Sispar.Domain.TitherModule.Commands
 {
-    public class DeleteTitherCommand : IRequest<NoContentResponse>
+    public class DeleteTitherCommand : Command<bool>
     {
         public Guid Id { get; set; }
 

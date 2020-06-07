@@ -35,15 +35,15 @@ namespace Sispar.Api
             services.AddControllers(options => options.Filters.Add<NotificationFilter>());
 
             // Auto Mapper Configurations
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new TitherProfile());
-                mc.AddProfile(new TitheProfile());
-                mc.AddProfile(new UserProfile());
-            });
+            //var mappingConfig = new MapperConfiguration(mc =>
+            //{
+            //    mc.AddProfile(new TitherProfile());
+            //    mc.AddProfile(new TitheProfile());
+            //    mc.AddProfile(new UserProfile());
+            //});
 
-            IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            //IMapper mapper = mappingConfig.CreateMapper();
+            //services.AddSingleton(mapper);
 
             // services.AddDbContext<SisparDataContext>(options => {
             //     //options.UseSqlServer("Server=sql5059.site4now.net;Database=DB_A5E01E_sisparhomolog;User Id=DB_A5E01E_sisparhomolog_admin;Password=metal001;");

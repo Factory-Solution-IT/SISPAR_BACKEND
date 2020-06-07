@@ -1,10 +1,12 @@
-﻿using MediatR;
-using Sispar.Api.Commands.Responses;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands
+namespace Sispar.DataContract.TitherModule.Parameters
 {
-    public class CreateTitherCommand : IRequest<CreateTitherResponse>
+    public class TitherParameters
     {
         public string Name { get; set; }
         public string Address { get; set; }

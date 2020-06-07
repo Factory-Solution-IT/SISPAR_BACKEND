@@ -1,16 +1,18 @@
-﻿using MediatR;
-using Sispar.Api.Commands.Responses;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sispar.Api.Commands
+namespace Sispar.DataContract.TitherModule.Models
 {
-    public class UpdateTitherCommand : IRequest<NoContentResponse>
+    public class TitherModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string AddressNumber { get; set; }
-        public string AddressComplent { get; set; }
+        public string AddressComplement { get; set; }
         public string ZipCode { get; set; }
         public string Neighborhood { get; set; }
         public string City { get; set; }
