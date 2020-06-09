@@ -25,9 +25,5 @@
     <ProjectReference Include="..\Sispar.Startup\Sispar.Startup.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="QueryHandlers\" />
-  </ItemGroup>
-
 
 </Project>

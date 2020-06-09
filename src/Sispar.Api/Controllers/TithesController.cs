@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sispar.Api.Commands;
-using Sispar.Api.Queries;
 using Sispar.DataContract.TitheModule.Parameters;
 using Sispar.Domain.TitheModule.Commands;
 using Sispar.Domain.TitheModule.Queries;
@@ -44,7 +42,7 @@ namespace Sispar.Api.Controllers
         [HttpGet("bytitherid/{titherId}")]
         public async Task<IActionResult> GetTithesByTitherId(Guid titherId)
         {
-            var result = await _mediator.Send(new GetTithesByTitherIdQuery(titherId));
+            var result = await _mediator.Send(new GetTitheByTitherIdQuery(titherId));
             return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
         }
 
