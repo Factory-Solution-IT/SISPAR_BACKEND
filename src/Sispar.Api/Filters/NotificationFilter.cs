@@ -23,8 +23,7 @@ namespace Sispar.Api.Filters
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 context.HttpContext.Response.ContentType = "application/json";
 
-                var result = new { errors = _notificationContext.Notifications };
-                var notifications = JsonConvert.SerializeObject(result);
+                var notifications = JsonConvert.SerializeObject(_notificationContext.Notifications);
                 await context.HttpContext.Response.WriteAsync(notifications);
 
                 return;

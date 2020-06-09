@@ -12,7 +12,7 @@ namespace Sispar.Domain.BaseModule.Abstractions
 
         void Edit(T obj);
 
-        void Delete(T obj);
+        // void Delete(T obj);
 
         IEnumerable<T> GetAll();
 

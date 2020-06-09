@@ -29,11 +29,11 @@ namespace Sispar.Infra.EF.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public void Delete(T obj)
-        {
-            _context.Remove(obj);
-            _context.SaveChanges();
-        }
+        //public void Delete(T obj)
+        //{
+        //    _context.Remove(obj);
+        //    _context.SaveChanges();
+        //}
 
         public void Dispose()
         {

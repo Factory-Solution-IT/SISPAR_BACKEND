@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sispar.Api.Commands;
-using Sispar.Api.Queries;
+using Sispar.DataContract.TitheModule.Parameters;
+using Sispar.Domain.TitheModule.Commands;
+using Sispar.Domain.TitheModule.Queries;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Sispar.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllTithes()
         {
-            var result = await _mediator.Send(new GetAllTithesQuery());
+            var result = await _mediator.Send(new ListTitheQuery());
             return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
         }
 
@@ -33,7 +34,7 @@ namespace Sispar.Api.Controllers
         [HttpGet("{id}", Name = "GetTitheById")]
         public async Task<IActionResult> GetTitheById(Guid id)
         {
-            var result = await _mediator.Send(new GetTitheByIdQuery(id));
+            var result = await _mediator.Send(new GetTitheQuery(id));
             return (result == null) ? NotFound() : (IActionResult)Ok(result);
         }
 
@@ -41,23 +42,25 @@ namespace Sispar.Api.Controllers
         [HttpGet("bytitherid/{titherId}")]
         public async Task<IActionResult> GetTithesByTitherId(Guid titherId)
         {
-            var result = await _mediator.Send(new GetTithesByTitherIdQuery(titherId));
+            var result = await _mediator.Send(new GetTitheByTitherIdQuery(titherId));
             return (result == null || result.Count() == 0) ? NotFound() : (IActionResult)Ok(result);
         }
 
         // POST: api/tithes
         [HttpPost]
-        public async Task<IActionResult> CreateTithe(CreateTitheCommand createTitheCommand)
+        public async Task<IActionResult> CreateTithe(TitheParameters parameters)
         {
-            var result = await _mediator.Send(createTitheCommand);
-            return CreatedAtRoute(nameof(GetTitheById), new { result.Id }, result);
+            var result = await _mediator.Send(new CreateTitheCommand(parameters));
+            return (result != null) 
+                ? CreatedAtRoute(nameof(GetTitheById), new { result.Id }, result)
+                : (IActionResult)BadRequest();
         }
 
         // PUT: api/tithes
-        [HttpPut]
-        public async Task<IActionResult> UpdateTithe(UpdateTitheCommand updateTitheRequest)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTithe(Guid id, TitheParameters parameters)
         {
-            await _mediator.Send(updateTitheRequest);
+            await _mediator.Send(new UpdateTitheCommand(id, parameters));
             return NoContent();
         }
 

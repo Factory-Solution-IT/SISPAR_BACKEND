@@ -19,7 +19,7 @@ namespace Sispar.Infra.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Sispar.Domain.Entities.Tithe", b =>
+            modelBuilder.Entity("Sispar.Domain.TitheModule.Tithe", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -27,6 +27,12 @@ namespace Sispar.Infra.Migrations
 
                     b.Property<DateTime>("DateContribution")
                         .HasColumnType("date");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("datetime2");
@@ -44,7 +50,7 @@ namespace Sispar.Infra.Migrations
                     b.ToTable("Tithes");
                 });
 
-            modelBuilder.Entity("Sispar.Domain.Entities.Tither", b =>
+            modelBuilder.Entity("Sispar.Domain.TitherModule.Tither", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +63,7 @@ namespace Sispar.Infra.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.Property<string>("AddressComplent")
+                    b.Property<string>("AddressComplement")
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
@@ -82,6 +88,12 @@ namespace Sispar.Infra.Migrations
 
                     b.Property<DateTime?>("DateBirthSpouse")
                         .HasColumnType("date");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("MarriegeDate")
                         .HasColumnType("date");
@@ -123,23 +135,24 @@ namespace Sispar.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("998867c5-b0f4-4aa9-a9aa-67919ca962e9"),
+                            Id = new Guid("08660d0c-30c4-4958-bd5e-19b19b96b533"),
                             Active = (short)1,
                             Address = "rua sem saida",
-                            BirthDate = new DateTime(2020, 5, 31, 2, 17, 20, 809, DateTimeKind.Utc).AddTicks(2719),
+                            BirthDate = new DateTime(2020, 6, 7, 1, 48, 33, 831, DateTimeKind.Utc).AddTicks(8764),
                             CPF = "999.999.999-99",
                             Cellphone = "11 9.9999-9999",
-                            DateBirthSpouse = new DateTime(2020, 5, 31, 2, 17, 20, 810, DateTimeKind.Utc).AddTicks(2385),
-                            MarriegeDate = new DateTime(2020, 5, 31, 2, 17, 20, 809, DateTimeKind.Utc).AddTicks(8643),
+                            DateBirthSpouse = new DateTime(2020, 6, 7, 1, 48, 33, 832, DateTimeKind.Utc).AddTicks(4516),
+                            Deleted = false,
+                            MarriegeDate = new DateTime(2020, 6, 7, 1, 48, 33, 832, DateTimeKind.Utc).AddTicks(2287),
                             MatiralStatus = (short)0,
                             Name = "Jose",
                             NameSpouse = "Maria",
-                            RegisterDate = new DateTime(2020, 5, 31, 2, 17, 20, 808, DateTimeKind.Utc).AddTicks(9172),
+                            RegisterDate = new DateTime(2020, 6, 7, 1, 48, 33, 831, DateTimeKind.Utc).AddTicks(6776),
                             Telephone = "11 9.9999-9999"
                         });
                 });
 
-            modelBuilder.Entity("Sispar.Domain.Entities.User", b =>
+            modelBuilder.Entity("Sispar.Domain.UserModule.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,6 +160,12 @@ namespace Sispar.Infra.Migrations
 
                     b.Property<short>("Active")
                         .HasColumnType("smallint");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -178,29 +197,31 @@ namespace Sispar.Infra.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d374301a-cd94-4909-9979-bd339e362797"),
+                            Id = new Guid("abf70193-dcb2-44f3-9579-66f4f0cc6b61"),
                             Active = (short)1,
+                            Deleted = false,
                             FirstName = "Felipe",
                             LastName = "Santos",
                             Password = "916c1678d3d28eb3e7798b9cf7acfbb6",
-                            RegisterDate = new DateTime(2020, 5, 31, 2, 17, 20, 775, DateTimeKind.Utc).AddTicks(6738),
+                            RegisterDate = new DateTime(2020, 6, 7, 1, 48, 33, 808, DateTimeKind.Utc).AddTicks(3751),
                             Username = "milton"
                         },
                         new
                         {
-                            Id = new Guid("fd7f2586-d4f1-43f4-8dc2-9cf515b6ba48"),
+                            Id = new Guid("975b86c2-c1a3-4254-9ba9-5dcf923fbc03"),
                             Active = (short)1,
+                            Deleted = false,
                             FirstName = "Milton",
                             LastName = "Honji",
                             Password = "916c1678d3d28eb3e7798b9cf7acfbb6",
-                            RegisterDate = new DateTime(2020, 5, 31, 2, 17, 20, 802, DateTimeKind.Utc).AddTicks(7706),
+                            RegisterDate = new DateTime(2020, 6, 7, 1, 48, 33, 829, DateTimeKind.Utc).AddTicks(1748),
                             Username = "felipe"
                         });
                 });
 
-            modelBuilder.Entity("Sispar.Domain.Entities.Tithe", b =>
+            modelBuilder.Entity("Sispar.Domain.TitheModule.Tithe", b =>
                 {
-                    b.HasOne("Sispar.Domain.Entities.Tither", "Tither")
+                    b.HasOne("Sispar.Domain.TitherModule.Tither", "Tither")
                         .WithMany("Tithes")
                         .HasForeignKey("TitherId")
                         .OnDelete(DeleteBehavior.Cascade)

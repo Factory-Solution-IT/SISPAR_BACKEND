@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Sispar.Api.Commands;
 using Sispar.Api.Commands.Responses;
+using Sispar.DataContract.UserModule.Models;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -36,7 +37,7 @@ namespace Sispar.Api.Controllers
             return GenerateToken(loginResponse);
         }
 
-        private OkObjectResult GenerateToken(LoginResponse loginResponse)
+        private OkObjectResult GenerateToken(LoginModel loginResponse)
         {
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
