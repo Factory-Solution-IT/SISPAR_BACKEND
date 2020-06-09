@@ -51,7 +51,9 @@ namespace Sispar.Api.Controllers
         public async Task<IActionResult> CreateTithe(TitheParameters parameters)
         {
             var result = await _mediator.Send(new CreateTitheCommand(parameters));
-            return CreatedAtRoute(nameof(GetTitheById), new { result.Id }, result);
+            return (result != null) 
+                ? CreatedAtRoute(nameof(GetTitheById), new { result.Id }, result)
+                : (IActionResult)BadRequest();
         }
 
         // PUT: api/tithes

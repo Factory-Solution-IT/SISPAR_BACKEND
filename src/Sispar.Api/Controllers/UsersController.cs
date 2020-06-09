@@ -43,7 +43,9 @@ namespace Sispar.Api.Controllers
         public async Task<IActionResult> CreateUser(UserParameters parameters)
         {
             var result = await _mediator.Send(new CreateUserCommand(parameters));
-            return CreatedAtRoute(nameof(GetUserById), new { result.Id }, result);
+            return (result != null) 
+                ? CreatedAtRoute(nameof(GetUserById), new { result.Id }, result)
+                : (IActionResult)BadRequest();
         }
 
         // PUT api/users

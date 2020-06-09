@@ -45,7 +45,9 @@ namespace Sispar.Api.Controllers
         public async Task<IActionResult> CreateTither(TitherParameters parameters)
         {
             var result = await _mediator.Send(new CreateTitherCommand(parameters));
-            return CreatedAtRoute(nameof(GetTitherById), new { result.Id }, result);
+            return (result != null)
+                ? CreatedAtRoute(nameof(GetTitherById), new { result.Id }, result)
+                : (IActionResult)BadRequest();
         }
 
         //PUT api/tithers
