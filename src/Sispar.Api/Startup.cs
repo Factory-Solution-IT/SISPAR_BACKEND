@@ -6,12 +6,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
+using Swashbuckle.AspNetCore.Swagger;
 using Sispar.Api.Filters;
 using Sispar.Startup;
 using System;
 using System.Collections.Generic;
 using System.Text;
+//using Microsoft.OpenApi.Models;
 
 namespace Sispar.Api
 {
@@ -29,13 +31,6 @@ namespace Sispar.Api
         {
             services.AddControllers(options => options.Filters.Add<NotificationFilter>());
 
-            // services.AddDbContext<SisparDataContext>(options => {
-            //     //options.UseSqlServer("Server=sql5059.site4now.net;Database=DB_A5E01E_sisparhomolog;User Id=DB_A5E01E_sisparhomolog_admin;Password=metal001;");
-            //     options.UseSqlServer(_config.GetConnectionString("SisparDbConn"));
-            // });
-
-            // Bearer ou Basic (Usuario|Senha) em Base64
-            // var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(Configuration["SecurityKey"]);
             services.AddAuthentication(x =>
             {

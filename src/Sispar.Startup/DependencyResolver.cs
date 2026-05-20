@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Sispar.Core.Notification;
 using Sispar.Domain.TitheModule.Abstractions;
 using Sispar.Domain.TitheModule.Adapters;
+using Sispar.Domain.TitherModule;
 using Sispar.Domain.TitherModule.Abstractions;
 using Sispar.Domain.TitherModule.Adapters;
 using Sispar.Domain.UserModule.Abstractions;
@@ -20,30 +21,13 @@ namespace Sispar.Startup
     {
         public static void Resolve(IServiceCollection services)
         {
-            // Gera toda vez uma nova instância
-            // services.AddTransient
-
-            // Gera uma única instância por requisição
-            // services.AddScoped
-
-            // Uma instância única por aplicação
-            // services.AddSingleton
-
             services.AddScoped<SisparDataContext>();
             services.AddScoped<NotificationContext>();
 
             var assembly = AppDomain.CurrentDomain.Load("Sispar.Application");
-            services.AddMediatR(assembly);
 
-            var mappingConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new TItherProfile());
-                mc.AddProfile(new TitheProfile());
-                mc.AddProfile(new UserProfile());
-            });
-
-            IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly)); 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddTransient<IUserRepository, EFUserRepository>();
 
